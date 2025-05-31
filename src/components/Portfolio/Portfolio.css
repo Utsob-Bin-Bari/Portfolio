@@ -1,0 +1,83 @@
+.s-button {
+  width: 8rem;
+  height: 2rem;
+}
+
+.portfolio {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  flex-direction: column;
+  height: 70vh;
+  margin-top: 15rem;
+}
+
+.portfolio span:nth-of-type(1) {
+  color: var(--black);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.portfolio span:nth-of-type(2) {
+  color: var(--orange);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.portfolio .swiper {
+  overflow: visible !important;
+}
+
+.portfolio-slider {
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.portfolio-slider .swiper-slide {
+  width: 20rem;
+}
+
+.portfolio img {
+  width: 19rem;
+  filter: drop-shadow(-12px 15px 13px rgba(0, 0, 0, 0.25));
+  border-radius: 19px;
+}
+
+
+.apk-buttons {
+  display: flex;
+  gap: 2rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.apk-button-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+}
+
+.apk-buttons span {
+  margin-top: 0.5rem;
+}
+@media (max-width: 480px) {
+  .portfolio{
+    margin-top:20rem!important;
+  }
+  .portfolio span:nth-of-type(1) {
+    font-size: 1.2rem!important;
+  }
+  .portfolio span:nth-of-type(2) {
+    font-size: 1.5rem!important;
+  }
+  .apk-buttons {
+    flex-direction: column; 
+  }
+}
+
+
+
+
