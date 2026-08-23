@@ -21,14 +21,6 @@
     color: var(--orange);
 }
 
-.os-blur1{
-    left: 38rem;
-    top: 16rem;
-}
-.os-blur2{
-    top: 9rem;
-    left: 0;
-}
 .others{
     display: flex;
     flex-direction: column;
@@ -47,14 +39,10 @@
     height: 9rem;
     border-radius: 100%;
 }
-.others>span{
-    color: var(--grey);
-}
 .others .o-review1 {
     font-weight: bold;
     color: var(--orange);
 }
-
 
 .os-wrapper .swiper {
     width: 100%;
@@ -67,8 +55,14 @@
     justify-content: center;
 }
 
+.os-wrapper .swiper-pagination-bullet{
+    background: var(--gray);
+    opacity: .55;
+}
+
 .os-wrapper .swiper-pagination-bullet-active{
     background: var(--orange);
+    opacity: 1;
 }
 
 @media screen and (max-width: 480px){
@@ -85,6 +79,6 @@
         height: 70px;
     }
     .os-wrapper .swiper {
-        margin-top: -2rem!important; 
+        margin-top: -2rem!important;
     }
   }

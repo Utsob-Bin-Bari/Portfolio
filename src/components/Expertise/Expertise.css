@@ -1,0 +1,120 @@
+.expertise {
+  display: flex;
+  gap: 3rem;
+  height: auto;
+  margin-bottom: 3rem;
+  padding-top: 3rem;
+}
+
+.design {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.expertise > .design {
+  flex: 1;
+  min-width: 0;
+}
+
+.design > :nth-child(1) {
+  color: var(--black);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0rem!important;
+}
+.design > :nth-child(2) {
+  color: var(--orange);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.design > :nth-child(3) {
+  color: var(--gray);
+  font-size: 14px;
+  margin-top: 1rem;
+}
+.s-button {
+  width: auto;
+  min-width: 8rem;
+  height: 2rem;
+  white-space: nowrap;
+  margin-top: 1rem;
+}
+
+.expertise .cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 13rem));
+  gap: 1.75rem;
+  align-items: start;
+  justify-content: center;
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.expertise .cards > *:not(.blur) {
+  display: flex;
+  width: 100%;
+}
+
+.expertise .cards > *:nth-of-type(1) {
+  grid-column: 2;
+  grid-row: 1;
+}
+.expertise .cards > *:nth-of-type(2) {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
+}
+.expertise .cards > *:nth-of-type(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.s-blur2 {
+  left: 14rem;
+  top: 8rem;
+}
+
+.s-blur1 {
+  top: 13rem;
+  left: -18rem;
+}
+
+@media screen and (max-width: 480px) {
+  .expertise {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 0 1rem 0 !important;
+    margin-bottom: 2rem!important;
+  }
+
+  .design > :nth-child(1) {
+    font-size: 1.2rem!important;
+  }
+  .design > :nth-child(2) {
+    font-size: 1.5rem !important;
+  }
+
+  .expertise .cards {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    justify-content: stretch;
+  }
+
+  .expertise .cards > *:not(.blur) {
+    max-width: none;
+  }
+
+  .expertise .cards > *:nth-of-type(1),
+  .expertise .cards > *:nth-of-type(2),
+  .expertise .cards > *:nth-of-type(3) {
+    grid-column: auto;
+    grid-row: auto;
+    align-self: auto;
+  }
+
+  .s-button {
+    margin-bottom: 2rem;
+  }
+}

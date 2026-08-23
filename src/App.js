@@ -4,14 +4,15 @@ import "./App.css";
 import { useContext, Suspense, lazy } from "react";
 import { themeContext } from "./Context";
 
-const Services = lazy(() => import("./components/Services/Services"));
+const Expertise = lazy(() => import("./components/Expertise/Expertise"));
 const Experience = lazy(() => import("./components/Experience/Experience"));
+const Work = lazy(() => import("./components/Work/Work"));
+const Portfolio = lazy(() => import("./components/Portfolio/Portfolio"));
 const Skills = lazy(() => import("./components/Skills/Skills"));
 const OtherSkills = lazy(() => import("./components/OtherSkills/OtherSkils"));
 const Tools = lazy(() => import("./components/Tools/Tools"));
 const DSA = lazy(() => import("./components/DSA/DSA"));
 const CP = lazy(() => import("./components/CP/CP"));
-const Portfolio = lazy(() => import("./components/Portfolio/Portfolio"));
 const Education = lazy(() => import("./components/Education/Education"));
 const Contact = lazy(() => import("./components/Contact/Contact"));
 const Footer = lazy(() => import("./components/Footer/Footer"));
@@ -31,14 +32,15 @@ function App() {
       <Navbar />
       <Intro />
       <Suspense fallback={<div className="spinner">Loading...</div>}>
-        <Services />
+        <Expertise />
         <Experience />
+        <Work />
+        <Portfolio />
         <Skills />
         <OtherSkills />
         <Tools />
         <DSA />
         <CP />
-        <Portfolio />
         <Education />
         <Contact />
         <Footer />
@@ -48,4 +50,3 @@ function App() {
 }
 
 export default App;
-

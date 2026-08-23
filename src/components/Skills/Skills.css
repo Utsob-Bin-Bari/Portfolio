@@ -1,45 +1,54 @@
 .skills {
     display: flex;
+    gap: 4rem;
     height: auto;
     margin-top: 4rem;
     align-items: center;
   }
-  
+
+  .s-left {
+    flex: 0 0 32rem;
+    min-width: 0;
+  }
+
   .design {
     display: flex;
     flex-direction: column;
     position: relative;
   }
-  
+
   .design > :nth-child(1) {
     color: var(--black);
     font-size: 2rem;
     font-weight: bold;
   }
-  
+
   .design > :nth-child(2) {
     color: var(--orange);
     font-size: 2.5rem;
     font-weight: bold;
   }
-  
+
   .design > :nth-child(3) {
     color: var(--gray);
     font-size: 14px;
     margin-top: 1rem;
   }
-  
+
   .s-button {
-    width: 8rem;
-    height: 2rem; 
+    width: auto;
+    min-width: 8rem;
+    height: 2rem;
+    white-space: nowrap;
     margin-top: 4rem;
   }
-  
+
   .s-right {
     position: relative;
-    left: -3rem;
+    left: 0;
+    flex: 0 0 auto;
   }
-  
+
   .s-mainCircle {
     left: 7rem;
     position: relative;
@@ -51,31 +60,31 @@
     background: white;
     z-index: 2;
   }
-  
+
   .s-mainCircle > * {
     position: absolute;
   }
-  
+
   .s-mainCircle > :nth-child(1) {
     left: 4rem;
     top: -3.2rem;
   }
-  
+
   .s-mainCircle > :nth-child(2) {
     left: -5rem;
     top: 5rem;
   }
-  
+
   .s-mainCircle > :nth-child(3) {
     left: 4rem;
     top: 5rem;
   }
-  
+
   .s-mainCircle > :nth-child(4) {
     left: 13rem;
     top: 5rem;
   }
-  
+
   .s-mainCircle > :nth-child(5) {
     left: 4rem;
     top: 13rem;
@@ -91,8 +100,6 @@
   .s-mainCircle > :nth-child(8) {
     left: -2.28rem;
     top: 11rem;
-    
-    
   }
   .s-mainCircle > :nth-child(9) {
     left: 10.28rem;
@@ -107,37 +114,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: "none";
     box-shadow: var(--smboxShadow);
     background: white;
   }
-  
-  .s-mainCircle>:nth-child(1) img{
-    transform: scale(.75);
-  }
-  .s-mainCircle>:nth-child(2) img{
-    transform: scale(.65);
-  }
-  .s-mainCircle>:nth-child(3) img{
-    transform: scale(.8);
-  }
-  .s-mainCircle > :nth-child(4) img {
-    transform: scale(0.7);
-  }
-  .s-mainCircle > :nth-child(5) img {
-    transform: scale(.185);
-  }
-  .s-mainCircle > :nth-child(6) img {
-    transform: scale(.185);
-  }
-  .s-mainCircle > :nth-child(7) img {
-    transform: scale(0.68);
-  }
-  .s-mainCircle > :nth-child(8) img {
-    transform: scale(0.2);
-  }
-  .s-mainCircle > :nth-child(9) img {
-    transform: scale(0.45);
+
+  .s-secCircle > img {
+    width: 3.2rem;
+    height: 3.2rem;
+    object-fit: contain;
   }
   .s-backCircle {
     position: absolute;
@@ -146,31 +130,36 @@
     border-radius: 100%;
     z-index: 1;
   }
-  
+
   .blueCircle {
     background: #1949b8;
     left: 16rem;
     top: -2rem!important;
   }
-  
+
   .yellowCircle {
     background: #f5c32c;
     left: 16rem;
     top: 7rem!important;
   }
-  
+
   @media screen and (max-width: 480px) {
     .skills {
       flex-direction: column;
-      margin-top: -9rem!important;
-      height: 35rem!important;
+      margin-top: 2rem!important;
+      height: auto!important;
       gap: 2rem !important;
+    }
+
+    .s-left {
+      flex: 0 0 auto;
+      width: 100%;
     }
     .design > :nth-child(1) {
       font-size: 1.2rem!important;
     }
     .design > :nth-child(2) {
-      font-size: 1.5rem!important; 
+      font-size: 1.5rem!important;
     }
     .s-right {
       display: flex;
@@ -180,11 +169,11 @@
       transform: scale(0.7);
       margin-top:-3rem!important;
     }
-  
+
     .s-mainCircle {
       position: static;
     }
-  
+
     .s-backCircle {
       left: 8rem !important;
     }

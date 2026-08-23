@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="144" height="144">
+  <defs>
+    <path id="cc-ray" d="M0 -25c1.6 9 2.6 17 2.6 23 0 2.6-1.2 3.8-2.6 3.8s-2.6-1.2-2.6-3.8c0-6 1-14 2.6-23z"/>
+  </defs>
+  <g fill="#D97757" transform="translate(32,32)">
+    <use href="#cc-ray"/>
+    <use href="#cc-ray" transform="rotate(36)"/>
+    <use href="#cc-ray" transform="rotate(72)"/>
+    <use href="#cc-ray" transform="rotate(108)"/>
+    <use href="#cc-ray" transform="rotate(144)"/>
+    <use href="#cc-ray" transform="rotate(180)"/>
+    <use href="#cc-ray" transform="rotate(216)"/>
+    <use href="#cc-ray" transform="rotate(252)"/>
+    <use href="#cc-ray" transform="rotate(288)"/>
+    <use href="#cc-ray" transform="rotate(324)"/>
+  </g>
+</svg>

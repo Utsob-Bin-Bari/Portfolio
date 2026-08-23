@@ -1,0 +1,177 @@
+.wk-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 3rem 0 3rem;
+}
+
+.wk-heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-heading > :nth-child(1) {
+  color: var(--black);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.wk-heading > :nth-child(2) {
+  color: var(--orange);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.wk-timeline {
+  --wk-gap: 2rem;
+  --wk-inset: -1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--wk-gap);
+  padding-left: 2.5rem;
+}
+
+.wk-item {
+  position: relative;
+}
+
+.wk-item::before {
+  content: "";
+  position: absolute;
+  left: var(--wk-inset);
+  transform: translateX(-50%);
+  top: 0;
+  bottom: calc(-1 * var(--wk-gap));
+  width: 3px;
+  border-radius: 3px;
+  background: var(--orange);
+}
+
+.wk-item:first-child::before {
+  top: 50%;
+}
+
+.wk-item:last-child::before {
+  bottom: 50%;
+}
+
+.wk-dot {
+  position: absolute;
+  left: var(--wk-inset);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 100%;
+  background: var(--orange);
+  border: 3px solid #fff;
+  box-shadow: var(--boxShadow);
+  z-index: 1;
+}
+
+.wk-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.26);
+  border: 5px solid var(--blueCard);
+  box-shadow: var(--boxShadow);
+  border-radius: 20px;
+  padding: 1.2rem 1.5rem;
+}
+
+.wk-title {
+  color: var(--orange);
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.wk-company {
+  color: var(--black);
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.15rem;
+}
+
+.wk-period {
+  color: var(--gray);
+  font-size: 13px;
+  margin-top: 0.15rem;
+}
+
+.wk-summary {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0.8rem 0 0;
+}
+
+.wk-points {
+  margin: 0.7rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.wk-points li {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 0.35rem;
+}
+
+.wk-points li::marker {
+  color: var(--orange);
+}
+
+.wk-blur1 {
+  top: 6rem;
+  left: -18rem;
+}
+
+.wk-blur2 {
+  top: 34rem;
+  left: auto;
+  right: -16rem;
+}
+
+@media screen and (max-width: 480px) {
+  .wk-wrapper {
+    padding: 2rem 0 1rem;
+    gap: 1.5rem;
+  }
+  .wk-heading > :nth-child(1) {
+    font-size: 1.2rem;
+  }
+  .wk-heading > :nth-child(2) {
+    font-size: 1.5rem;
+  }
+  .wk-timeline {
+    --wk-gap: 1.2rem;
+    --wk-inset: -1.05rem;
+    padding-left: 1.6rem;
+  }
+  .wk-dot {
+    width: 0.85rem;
+    height: 0.85rem;
+    border-width: 2px;
+  }
+  .wk-card {
+    padding: 1rem;
+    border-width: 4px;
+    border-radius: 16px;
+  }
+  .wk-title {
+    font-size: 1rem;
+  }
+  .wk-company {
+    font-size: 0.9rem;
+  }
+  .wk-summary,
+  .wk-points li {
+    font-size: 13px;
+  }
+  .wk-blur1,
+  .wk-blur2 {
+    display: none;
+  }
+}
