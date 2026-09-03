@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import Wave from "../../img/wave.png";
+import Wave from "../../img/decor/wave.webp";
 import Insta from "@iconscout/react-unicons/icons/uil-instagram";
 import Facebook from "@iconscout/react-unicons/icons/uil-facebook";
 import Github from "@iconscout/react-unicons/icons/uil-github";
@@ -15,7 +15,6 @@ const Footer = () => {
         <a className="f-link" href="mailto:utsobbinbari@gmail.com">
           utsobbinbari@gmail.com
         </a>
-        {/* tel: needs the bare digits - the dash is display only */}
         <a className="f-link" href="tel:+8801316312208">
           Mobile: +8801316-312208
         </a>

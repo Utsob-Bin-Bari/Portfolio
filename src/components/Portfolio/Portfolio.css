@@ -40,6 +40,8 @@
 }
 
 .pj-shots {
+  --shot-h: 26rem;
+  --shot-bw: 4px;
   width: 14rem;
   flex-shrink: 0;
   filter: drop-shadow(-6px 16px 24px rgba(36, 45, 73, 0.18))
@@ -69,25 +71,35 @@
 }
 
 .pj-shot {
-  width: 100%;
-  height: 26rem;
+  width: auto;
+  max-width: 100%;
+  height: var(--shot-h);
+  display: block;
+  margin: 0 auto;
   object-fit: contain;
+  border: var(--shot-bw) dashed var(--blueCard);
   border-radius: 19px;
+  box-sizing: border-box;
+}
+
+.pj-shot.pj-shot-dark {
+  border-color: rgba(221, 248, 254, 0.35);
 }
 
 .pj-shot-placeholder {
+  box-sizing: content-box;
+  height: calc(var(--shot-h) - 2 * var(--shot-bw));
+  aspect-ratio: 640 / 1387;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
   background: #f2f4f7;
-  border: 4px dashed var(--blueCard);
 }
 
 .pj-shot-placeholder.pj-shot-dark {
   background: #1c1c1c;
-  border-color: rgba(221, 248, 254, 0.35);
 }
 
 .pj-shot-placeholder span {
@@ -201,9 +213,6 @@
   right: -16rem;
 }
 
-/* one blob per project, alternating pink/blue and sitting on the same side as
-   that card's phone. offsets centre each on its card - the cards are a uniform
-   573px because .pj-shot pins the height, so these stay put. */
 .pj-blur3 {
   top: 87rem;
   left: -18rem;
@@ -241,10 +250,8 @@
     gap: 1.2rem;
   }
   .pj-shots {
+    --shot-h: 22rem;
     width: 100%;
-  }
-  .pj-shot {
-    height: 22rem;
   }
   .pj-name {
     font-size: 1.25rem;

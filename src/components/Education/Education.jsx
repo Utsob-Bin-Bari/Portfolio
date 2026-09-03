@@ -5,9 +5,9 @@ import "swiper/css";
 
 import { Pagination } from "swiper/modules";
 import "swiper/css/pagination";
-import Buet from "../../img/Buet.svg";
-import Ahc from "../../img/Ahc.png";
-import Biam from "../../img/Biam.png";
+import Buet from "../../img/education/Buet.svg";
+import Ahc from "../../img/education/Ahc.webp";
+import Biam from "../../img/education/Biam.webp";
 
 const Education = () => {
   const clients = [

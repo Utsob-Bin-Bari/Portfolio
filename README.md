@@ -37,7 +37,15 @@ src/
   App.js             Page layout — sections render in this order
   Context.js         Dark/light theme context
   components/        One folder per section (.jsx + .css)
-  img/               Images, logos, and icons
+  img/               Images, grouped by where they are used
+    intro/           Hero portrait, floating badges, background vectors
+    projects/        App screenshots for the Portfolio carousel
+    expertise/       Areas-of-expertise card icons
+    stack/           Language and framework logos (Skills + Expertise)
+    tools/           IDE, build and release tool logos (Tools + Other Skills)
+    interests/       Other Skills / beyond-code photos
+    education/       Institution logos
+    decor/           Purely decorative art (the footer wave)
   fonts/             Custom fonts
 ```
 
@@ -63,20 +71,31 @@ Each item below lives in a single file — edit the text and images directly, no
 
 To add, remove, or reorder sections, edit the JSX in [src/App.js](src/App.js).
 
-Drop new images into [src/img/](src/img/) and import them at the top of the component that uses them. Replace the CV at [src/components/Expertise/Utsob_Bin_Bari_CV.pdf](src/components/Expertise/Utsob_Bin_Bari_CV.pdf) with your own — keep the filename and no code change is needed.
+Drop new images into the matching [src/img/](src/img/) subfolder and import them at the top of the component
+that uses them. **All raster images are WebP** — logos and flat-colour icons are encoded losslessly
+(pixel-identical to the source PNG, but smaller), photographs at quality 80. Icons that are genuinely
+vector stay `.svg`; do not convert those. Replace the CV at [src/components/Expertise/Utsob_Bin_Bari_CV.pdf](src/components/Expertise/Utsob_Bin_Bari_CV.pdf) with your own — keep the filename and no code change is needed.
 
 ### Project screenshots
 
-Project screenshots are served from `public/projects/` rather than imported from `src/img/`, because a
-missing `src/` import breaks the build whereas a missing public file just falls back to a placeholder.
+Screenshots live in [src/img/projects/](src/img/projects/) and are imported like every other image, so
+they get content-hashed filenames and pick up the immutable one-year cache header that `netlify.toml`
+sets on `/static/*`. The trade-off is that a missing file fails the build instead of failing silently —
+which is what you want. `ProjectCard` still renders a dashed placeholder if an image 404s at runtime.
 
-Name them `<slug>-1.png`, `<slug>-2.png`, `<slug>-3.png` using the `slug` from the `projects` array in
-[Portfolio.jsx](src/components/Portfolio/Portfolio.jsx) — currently `sonalipay`, `conected`,
-`corrigan-sports`, `taraa`, `evocart`. Each project's `shots` array lists which indexes exist, so drop
-an entry to show fewer slides.
+Name them `<slug>-1.webp`, `<slug>-2.webp`, `<slug>-3.webp` — the `slug` values are `sonalipay`,
+`conected`, `corrigan-sports`, `taraa`, `evocart`. Import them at the top of
+[Portfolio.jsx](src/components/Portfolio/Portfolio.jsx) and list them in that project's `shots` array;
+the array drives the carousel, so drop an entry to show fewer slides.
 
-**Resize before committing:** phone captures run 1–3 MB each. Target **≤900 px wide and ≤200 KB** per
-image, or the bundle balloons.
+**Resize and convert before committing:** raw phone captures run 1–4 MB each. The card renders the
+shot at 236×512 CSS px, so **640 px wide at WebP quality 80** is already comfortably retina-sharp and
+lands each file under 90 KB. Anything larger is wasted bytes.
+
+The dashed frame around each shot is sized from two custom properties on `.pj-shots` — `--shot-h`
+(the height) and `--shot-bw` (the border width). The `<img>` sizes its own width from the image's
+aspect ratio so the border hugs the screenshot; the placeholder mirrors that box via `aspect-ratio`.
+Change the height in one place (`--shot-h`, including the mobile override) and both stay in step.
 
 ### Gotchas when editing CSS
 

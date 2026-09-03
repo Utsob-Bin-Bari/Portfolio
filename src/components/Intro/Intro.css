@@ -78,6 +78,7 @@
 }
 
 .i-right > :nth-child(3) {
+  width: 1131px;
   transform: scale(0.25);
   top: -45.6rem !important;
   left: -15rem;

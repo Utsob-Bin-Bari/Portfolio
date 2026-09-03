@@ -144,15 +144,10 @@
   top: 7rem!important;
 }
 
-/* the Mobile Stack wheel gets its blue glow by accident - the skyblue .blur on
-   the Other Skills heading below it bleeds upward. nothing sits under the tools
-   wheel to do the same, so place one deliberately at the matching offset. */
 .t-blur1 {
   top: 16.25rem;
   left: -0.75rem;
 }
-/* pink glow over the top of the wheel. named for the wheel rather than reusing
-   .s-blur2, which Expertise and DSA already own with a different position. */
 .t-wheelBlur {
   top: -5.5rem;
   left: 2rem;

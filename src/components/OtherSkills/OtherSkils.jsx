@@ -6,14 +6,14 @@ import "swiper/css";
 import { Pagination } from "swiper/modules";
 import "swiper/css/pagination";
 
-import ai from "../../img/ai.jpg";
-import github from "../../img/gitHubBig.png";
-import problem from "../../img/problem.jpg";
-import language from "../../img/language.jpg";
-import monkeyType from "../../img/monkeyType.png";
-import management from "../../img/management.jpg";
-import volleyBall from "../../img/volleyball.jpg";
-import gamming from "../../img/gamming.jpg";
+import ai from "../../img/interests/ai.webp";
+import github from "../../img/tools/gitHubBig.webp";
+import problem from "../../img/interests/problem.webp";
+import language from "../../img/interests/language.webp";
+import monkeyType from "../../img/interests/monkeyType.webp";
+import management from "../../img/interests/management.webp";
+import volleyBall from "../../img/interests/volleyball.webp";
+import gamming from "../../img/interests/gamming.webp";
 
 const OtherSkills = () => {
   const clients = [

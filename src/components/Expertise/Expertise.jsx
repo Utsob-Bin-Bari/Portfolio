@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import "./Expertise.css";
 import Card from "../Card/Card";
-import react from "../../img/react.svg";
-import realtime from "../../img/realtime.svg";
-import release from "../../img/release.svg";
+import react from "../../img/stack/react.svg";
+import realtime from "../../img/expertise/realtime.svg";
+import release from "../../img/expertise/release.svg";
 
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";

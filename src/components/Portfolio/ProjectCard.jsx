@@ -4,10 +4,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const shotUrl = (slug, index) =>
-  `${process.env.PUBLIC_URL}/projects/${slug}-${index}.png`;
-
-const Shot = ({ slug, index, name, darkMode }) => {
+const Shot = ({ src, index, name, darkMode }) => {
   const [failed, setFailed] = useState(false);
 
   if (failed) {
@@ -25,8 +22,8 @@ const Shot = ({ slug, index, name, darkMode }) => {
 
   return (
     <img
-      className="pj-shot"
-      src={shotUrl(slug, index)}
+      className={`pj-shot${darkMode ? " pj-shot-dark" : ""}`}
+      src={src}
       alt={`${name} screenshot ${index}`}
       loading="lazy"
       onError={() => setFailed(true)}
@@ -35,7 +32,7 @@ const Shot = ({ slug, index, name, darkMode }) => {
 };
 
 const ProjectCard = ({ project, darkMode }) => {
-  const { name, slug, tagline, company, status, shots, stack, points, links } =
+  const { name, tagline, company, status, shots, stack, points, links } =
     project;
 
   return (
@@ -48,11 +45,11 @@ const ProjectCard = ({ project, darkMode }) => {
             pagination={{ clickable: true }}
             grabCursor={true}
           >
-            {shots.map((index) => (
-              <SwiperSlide key={index}>
+            {shots.map((shot, index) => (
+              <SwiperSlide key={shot}>
                 <Shot
-                  slug={slug}
-                  index={index}
+                  src={shot}
+                  index={index + 1}
                   name={name}
                   darkMode={darkMode}
                 />
@@ -61,8 +58,8 @@ const ProjectCard = ({ project, darkMode }) => {
           </Swiper>
         ) : (
           <Shot
-            slug={slug}
-            index={shots[0]}
+            src={shots[0]}
+            index={1}
             name={name}
             darkMode={darkMode}
           />

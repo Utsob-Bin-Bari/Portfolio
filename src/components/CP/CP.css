@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* vertical spacing cut to 2/3 of what it was: 6rem / 2rem / 8rem */
     padding-top: 4rem;
     gap: 5rem;
     height: auto;

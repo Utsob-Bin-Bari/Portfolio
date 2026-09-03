@@ -65,10 +65,6 @@
     opacity: 1;
 }
 
-/* both blobs shipped stacked at .blur's default offsets, which put them above
-   the section entirely and hid the purple under the blue. split them: blue
-   drops down to sit with the heading, pink anchors the far corner. doubled-up
-   selectors so these beat .blur regardless of stylesheet order. */
 .blur.os-blur-blue {
   top: -1.5rem;
   left: 56%;

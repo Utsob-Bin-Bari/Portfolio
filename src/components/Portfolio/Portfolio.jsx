@@ -3,6 +3,22 @@ import "./Portfolio.css";
 import ProjectCard from "./ProjectCard";
 import { themeContext } from "../../Context";
 
+import sonalipay1 from "../../img/projects/sonalipay-1.webp";
+import sonalipay2 from "../../img/projects/sonalipay-2.webp";
+import sonalipay3 from "../../img/projects/sonalipay-3.webp";
+import conected1 from "../../img/projects/conected-1.webp";
+import conected2 from "../../img/projects/conected-2.webp";
+import conected3 from "../../img/projects/conected-3.webp";
+import corriganSports1 from "../../img/projects/corrigan-sports-1.webp";
+import corriganSports2 from "../../img/projects/corrigan-sports-2.webp";
+import corriganSports3 from "../../img/projects/corrigan-sports-3.webp";
+import taraa1 from "../../img/projects/taraa-1.webp";
+import taraa2 from "../../img/projects/taraa-2.webp";
+import taraa3 from "../../img/projects/taraa-3.webp";
+import evocart1 from "../../img/projects/evocart-1.webp";
+import evocart2 from "../../img/projects/evocart-2.webp";
+import evocart3 from "../../img/projects/evocart-3.webp";
+
 const projects = [
   {
     name: "SonaliPay",
@@ -10,7 +26,7 @@ const projects = [
     tagline: "Cross-Border Remittance",
     company: "Tulip-Tech",
     status: "In Progress",
-    shots: [1, 2, 3],
+    shots: [sonalipay1, sonalipay2, sonalipay3],
     stack: ["React Native", "Expo", "TypeScript", "Reanimated"],
     points: [
       "Full ground-up rebuild of a live production application serving 50,000+ active users, preserving continuity under financial-services constraints.",
@@ -25,7 +41,7 @@ const projects = [
     tagline: "Therapist Booking Marketplace",
     company: "Tulip-Tech",
     status: "Live on iOS & Android",
-    shots: [1, 2, 3],
+    shots: [conected1, conected2, conected3],
     stack: ["React Native", "TypeScript", "Supabase Realtime", "Stripe"],
     points: [
       "Built a complete real-time messaging system over Supabase Realtime broadcast channels — one global hook covering every conversation the user participates in.",
@@ -49,7 +65,7 @@ const projects = [
     tagline: "Live Sports Streaming",
     company: "Tulip-Tech",
     status: "Live on iOS",
-    shots: [1, 2, 3],
+    shots: [corriganSports1, corriganSports2, corriganSports3],
     stack: ["React Native", "JW Player", "InPlayer", "Sanity CMS"],
     points: [
       "Paid live-streaming application for the US market covering high school and college lacrosse and American football.",
@@ -69,7 +85,7 @@ const projects = [
     tagline: "AI-First EduTech",
     company: "Scaledex — a concern of Fiber@Home",
     status: "Delivered",
-    shots: [1, 2, 3],
+    shots: [taraa1, taraa2, taraa3],
     stack: ["React Native", "Expo", "100ms SDK", "Socket.io"],
     points: [
       "Token-by-token streaming of AI responses delivered as webhook chunks, with client-side buffering, ordering and paced incremental rendering.",
@@ -84,7 +100,7 @@ const projects = [
     tagline: "Multi-Retailer E-Commerce",
     company: "Vista Systech",
     status: "Delivered",
-    shots: [1, 2, 3],
+    shots: [evocart1, evocart2, evocart3],
     stack: ["React Native", "Bare Workflow", "OpenAI API", "Meta Graph API"],
     points: [
       "OpenAI API for intelligent content generation from image analysis, and PixelAI for automated background removal in product images.",

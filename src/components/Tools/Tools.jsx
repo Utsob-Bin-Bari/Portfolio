@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import "./Tools.css";
-import visualStudio from "../../img/visualStudio.png";
-import androidStudio from "../../img/androidStudio.png";
-import xCode from "../../img/xCode.svg";
-import expo from "../../img/expo.svg";
-import firebase from "../../img/firebase.svg";
-import postman from "../../img/postman.png";
-import github from "../../img/gitHubBig.png";
-import cursor from "../../img/cursor.png";
-import claudeCode from "../../img/claudeCode.svg";
+import visualStudio from "../../img/tools/visualStudio.webp";
+import androidStudio from "../../img/tools/androidStudio.webp";
+import xCode from "../../img/tools/xCode.svg";
+import expo from "../../img/tools/expo.svg";
+import firebase from "../../img/tools/firebase.svg";
+import postman from "../../img/tools/postman.webp";
+import github from "../../img/tools/gitHubBig.webp";
+import cursor from "../../img/tools/cursor.webp";
+import claudeCode from "../../img/tools/claudeCode.svg";
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
 import {Link} from 'react-scroll';
@@ -78,9 +78,6 @@ const Tools = () => {
         </motion.div>
         <div className="t-backCircle blueCircle"></div>
         <div className="t-backCircle yellowCircle"></div>
-        {/* .t-right is transformed on mobile, which traps this blob's z-index
-            inside a stacking context so it can no longer hide behind the dark
-            background the way the other blobs do - so skip it in dark mode */}
         {!darkMode && (
           <>
             <div className="blur t-blur1" style={{ background: "skyblue" }}></div>

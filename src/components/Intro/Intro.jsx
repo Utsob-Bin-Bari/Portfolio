@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import "./Intro.css";
-import Vector1 from "../../img/Vector1.png";
-import Vector2 from "../../img/Vector2.png";
-import boy from "../../img/boy.png";
-import web from "../../img/web.png";
-import developer from "../../img/developer.png";
-import idea from "../../img/idea.svg";
+import Vector1 from "../../img/intro/Vector1.webp";
+import Vector2 from "../../img/intro/Vector2.webp";
+import boy from "../../img/intro/boy.webp";
+import web from "../../img/intro/web.webp";
+import developer from "../../img/intro/developer.webp";
+import idea from "../../img/intro/idea.svg";
 import FloatinDiv from "../FloatingDiv/FloatingDiv";
 import Insta from "@iconscout/react-unicons/icons/uil-instagram";
 import Facebook from "@iconscout/react-unicons/icons/uil-facebook";
