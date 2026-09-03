@@ -7,7 +7,7 @@ import expo from "../../img/expo.svg";
 import firebase from "../../img/firebase.svg";
 import postman from "../../img/postman.png";
 import github from "../../img/gitHubBig.png";
-import cursor from "../../img/cursor.svg";
+import cursor from "../../img/cursor.png";
 import claudeCode from "../../img/claudeCode.svg";
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
@@ -46,7 +46,7 @@ const Tools = () => {
             <br />
             Messaging - Firebase Cloud Messaging &amp; Notifee
             <br />
-            Testing Tools - Postman &amp; Flipper
+            Testing Tools - Postman &amp; Insomnia
             <br />
             Version Control - Git &amp; Source Tree
             <br/>
@@ -78,6 +78,18 @@ const Tools = () => {
         </motion.div>
         <div className="t-backCircle blueCircle"></div>
         <div className="t-backCircle yellowCircle"></div>
+        {/* .t-right is transformed on mobile, which traps this blob's z-index
+            inside a stacking context so it can no longer hide behind the dark
+            background the way the other blobs do - so skip it in dark mode */}
+        {!darkMode && (
+          <>
+            <div className="blur t-blur1" style={{ background: "skyblue" }}></div>
+            <div
+              className="blur t-wheelBlur"
+              style={{ background: "var(--purple)" }}
+            ></div>
+          </>
+        )}
       </div>
     </div>
   );

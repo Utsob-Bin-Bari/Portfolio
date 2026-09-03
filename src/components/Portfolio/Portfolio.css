@@ -42,14 +42,14 @@
 .pj-shots {
   width: 14rem;
   flex-shrink: 0;
+  filter: drop-shadow(-6px 16px 24px rgba(36, 45, 73, 0.18))
+          drop-shadow(-2px 4px 8px rgba(36, 45, 73, 0.1));
 }
 
 .pj-shots .swiper {
-  /* swiper clips its slides, so pull the clip box out past the shot to give
-     the shadow room to spread instead of being cut off at the slide edge */
   overflow: hidden;
-  margin: 0 -1.5rem;
-  padding: 0.25rem 1.5rem 2rem;
+  margin: 0;
+  padding: 0 0 2.25rem;
 }
 
 .pj-shots .swiper-slide {
@@ -73,7 +73,6 @@
   height: 26rem;
   object-fit: contain;
   border-radius: 19px;
-  filter: drop-shadow(-8px 10px 12px rgba(0, 0, 0, 0.22));
 }
 
 .pj-shot-placeholder {
@@ -82,12 +81,13 @@
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
-  background: rgba(255, 255, 255, 0.35);
+  background: #f2f4f7;
   border: 4px dashed var(--blueCard);
-  /* the .pj-shot drop-shadow sits behind a translucent box, so it bleeds
-     through as a grey wash in light mode - use a clipped box-shadow instead */
-  filter: none;
-  box-shadow: -8px 10px 12px rgba(0, 0, 0, 0.12);
+}
+
+.pj-shot-placeholder.pj-shot-dark {
+  background: #1c1c1c;
+  border-color: rgba(221, 248, 254, 0.35);
 }
 
 .pj-shot-placeholder span {
@@ -201,6 +201,25 @@
   right: -16rem;
 }
 
+/* one blob per project, alternating pink/blue and sitting on the same side as
+   that card's phone. offsets centre each on its card - the cards are a uniform
+   573px because .pj-shot pins the height, so these stay put. */
+.pj-blur3 {
+  top: 87rem;
+  left: -18rem;
+}
+
+.pj-blur4 {
+  top: 119rem;
+  left: auto;
+  right: -16rem;
+}
+
+.pj-blur5 {
+  top: 151rem;
+  left: -18rem;
+}
+
 @media screen and (max-width: 480px) {
   .portfolio {
     padding: 2rem 0 1rem;
@@ -224,11 +243,6 @@
   .pj-shots {
     width: 100%;
   }
-  .pj-shots .swiper {
-    /* page padding is tighter than the overhang, so pad inwards instead */
-    margin: 0;
-    padding: 0.25rem 1rem 2rem;
-  }
   .pj-shot {
     height: 22rem;
   }
@@ -242,7 +256,10 @@
     font-size: 13px;
   }
   .pj-blur1,
-  .pj-blur2 {
+  .pj-blur2,
+  .pj-blur3,
+  .pj-blur4,
+  .pj-blur5 {
     display: none;
   }
 }

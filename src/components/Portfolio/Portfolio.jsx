@@ -118,6 +118,9 @@ const Portfolio = () => {
 
       <div className="blur pj-blur1" style={{ background: "var(--purple)" }}></div>
       <div className="blur pj-blur2" style={{ background: "#ABF1FF94" }}></div>
+      <div className="blur pj-blur3" style={{ background: "var(--purple)" }}></div>
+      <div className="blur pj-blur4" style={{ background: "#ABF1FF94" }}></div>
+      <div className="blur pj-blur5" style={{ background: "var(--purple)" }}></div>
     </div>
   );
 };

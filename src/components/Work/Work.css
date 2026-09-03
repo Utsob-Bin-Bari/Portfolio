@@ -134,6 +134,15 @@
   right: -16rem;
 }
 
+/* third role, mirroring wk-blur1 on the left. anchored to the bottom of the
+   wrapper rather than a fixed top like the other two, so it stays centred on
+   the last card when the cards above it reflow to a different height. */
+.wk-blur3 {
+  top: auto;
+  bottom: 4rem;
+  left: -18rem;
+}
+
 @media screen and (max-width: 480px) {
   .wk-wrapper {
     padding: 2rem 0 1rem;
@@ -171,7 +180,8 @@
     font-size: 13px;
   }
   .wk-blur1,
-  .wk-blur2 {
+  .wk-blur2,
+  .wk-blur3 {
     display: none;
   }
 }

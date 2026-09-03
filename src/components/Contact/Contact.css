@@ -7,9 +7,13 @@
   .contact-form {
     padding: 0 3rem 0 3rem;
     display: flex;
-    height: 80vh;
+    /* was 80vh, which left ~400px of blank page under the Send button before
+       the footer wave. sized to the form instead; the padding-bottom is the
+       only thing separating it from the wave, which the footer then pulls
+       7rem back up over */
     margin-top: 4rem;
     padding-top: 3rem;
+    padding-bottom: 5rem;
   }
 
   .c-right {

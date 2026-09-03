@@ -2,11 +2,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top:6rem;
+    /* vertical spacing cut to 2/3 of what it was: 6rem / 2rem / 8rem */
+    padding-top: 4rem;
     gap: 5rem;
     height: auto;
-    padding-bottom: 2rem;
-    margin-bottom: 8rem;
+    padding-bottom: 1.333rem;
+    margin-bottom: 5.333rem;
     color: var(--black);
   }
   .cp-achievement{

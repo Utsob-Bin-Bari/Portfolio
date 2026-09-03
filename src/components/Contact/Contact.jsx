@@ -17,10 +17,33 @@ const Contact = () => {
     if (status === "sending") return;
 
     const formEl = e.target;
+    const data = new FormData(formEl);
+    const name = (data.get("user_name") || "").toString().trim();
+    const email = (data.get("user_email") || "").toString().trim();
+    const message = (data.get("message") || "").toString().trim();
+
+    // EmailJS resolves {{placeholders}} by name, and a template built from the
+    // current default expects name/email/title while an older one expects
+    // user_name/user_email. Anything unused is simply ignored, so sending both
+    // spellings keeps this working whichever template the dashboard holds.
+    const templateParams = {
+      name,
+      email,
+      message,
+      user_name: name,
+      user_email: email,
+      from_name: name,
+      from_email: email,
+      reply_to: email,
+      title: `Portfolio message from ${name}`,
+      subject: `Portfolio message from ${name}`,
+      to_email: FALLBACK_EMAIL,
+    };
+
     setStatus("sending");
 
     emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
+      .send(SERVICE_ID, TEMPLATE_ID, templateParams, {
         publicKey: PUBLIC_KEY,
       })
       .then(() => {

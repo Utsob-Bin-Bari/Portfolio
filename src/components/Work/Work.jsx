@@ -86,6 +86,7 @@ const Work = () => {
 
       <div className="blur wk-blur1" style={{ background: "var(--purple)" }}></div>
       <div className="blur wk-blur2" style={{ background: "#ABF1FF94" }}></div>
+      <div className="blur wk-blur3" style={{ background: "var(--purple)" }}></div>
     </div>
   );
 };

@@ -142,6 +142,13 @@
     left: 16rem;
     top: 7rem!important;
   }
+/* pink glow over the top of the wheel. named for the wheel rather than reusing
+   .s-blur2, which Expertise and DSA already own with a different position. */
+.s-wheelBlur {
+  top: -5.5rem;
+  left: 2rem;
+}
+
 
   @media screen and (max-width: 480px) {
     .skills {

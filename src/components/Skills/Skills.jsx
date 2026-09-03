@@ -3,8 +3,8 @@ import "./Skills.css";
 import react from "../../img/react.svg";
 import typescript from "../../img/typescript.svg";
 import javaScript from "../../img/javaScript.png";
-import expo from "../../img/expo.svg";
-import redux from "../../img/redux.svg";
+import express from "../../img/express.png";
+import redux from "../../img/redux.png";
 import tailwind from "../../img/tailwind.svg";
 import HTML from "../../img/HTML.png";
 import css from "../../img/css3.svg";
@@ -13,11 +13,13 @@ import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
 import {Link} from 'react-scroll'
 
+// order drives placement - .s-mainCircle positions children by :nth-child, so
+// index 2 is the left slot and index 3 is the middle of the wheel
 const stack = [
   { img: react, alt: "React" },
-  { img: typescript, alt: "TypeScript" },
   { img: javaScript, alt: "JavaScript" },
-  { img: expo, alt: "Expo" },
+  { img: typescript, alt: "TypeScript" },
+  { img: express, alt: "Express" },
   { img: redux, alt: "Redux" },
   { img: tailwind, alt: "TailwindCSS" },
   { img: HTML, alt: "HTML" },
@@ -78,6 +80,15 @@ const Skills = () => {
         </motion.div>
         <div className="s-backCircle blueCircle"></div>
         <div className="s-backCircle yellowCircle"></div>
+        {/* .s-right is transformed on mobile, which traps this blob's z-index
+            inside a stacking context so it can no longer hide behind the dark
+            background the way the other blobs do - so skip it in dark mode */}
+        {!darkMode && (
+          <div
+            className="blur s-wheelBlur"
+            style={{ background: "var(--purple)" }}
+          ></div>
+        )}
       </div>
     </div>
   );

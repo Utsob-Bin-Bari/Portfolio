@@ -3,7 +3,9 @@
     gap: 3rem;
     height: auto;
     margin-top: 6rem;
-    margin-bottom: 8rem;
+    /* collapses against .cp's margin-top, so this is the gap above the
+       competitive-programming row - kept in step with it at 2/3 of 8rem */
+    margin-bottom: 5.333rem;
     padding-top: 3rem;
   }
   .design {

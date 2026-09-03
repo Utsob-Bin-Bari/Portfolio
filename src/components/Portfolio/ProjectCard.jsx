@@ -7,12 +7,16 @@ import "swiper/css/pagination";
 const shotUrl = (slug, index) =>
   `${process.env.PUBLIC_URL}/projects/${slug}-${index}.png`;
 
-const Shot = ({ slug, index, name }) => {
+const Shot = ({ slug, index, name, darkMode }) => {
   const [failed, setFailed] = useState(false);
 
   if (failed) {
     return (
-      <div className="pj-shot pj-shot-placeholder">
+      <div
+        className={`pj-shot pj-shot-placeholder${
+          darkMode ? " pj-shot-dark" : ""
+        }`}
+      >
         <span>{name}</span>
         <span>screenshot {index}</span>
       </div>
@@ -46,12 +50,22 @@ const ProjectCard = ({ project, darkMode }) => {
           >
             {shots.map((index) => (
               <SwiperSlide key={index}>
-                <Shot slug={slug} index={index} name={name} />
+                <Shot
+                  slug={slug}
+                  index={index}
+                  name={name}
+                  darkMode={darkMode}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
         ) : (
-          <Shot slug={slug} index={shots[0]} name={name} />
+          <Shot
+            slug={slug}
+            index={shots[0]}
+            name={name}
+            darkMode={darkMode}
+          />
         )}
       </div>
 

@@ -73,7 +73,7 @@ const Intro = () => {
           transition={transition}
           className="floating-div"
         >
-          <FloatinDiv img={developer} text1="iOS &" text2="Android" />
+          <FloatinDiv img={web} text1="iOS &" text2="Android" />
         </motion.div>
         <motion.div
           initial={{ left: "9rem", top: "18rem" }}
@@ -82,9 +82,9 @@ const Intro = () => {
           className="floating-div"
         >
           <FloatinDiv
-            img={web}
+            img={developer}
             text1="React Native "
-            text2="Developer"
+            text2="Engineer"
           />
         </motion.div>
         <div className="blur" style={{ background: "rgb(238 210 255)" }}></div>
