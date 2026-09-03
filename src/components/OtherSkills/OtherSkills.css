@@ -1,6 +1,5 @@
 .os-wrapper{
-    padding: 12rem 3rem 0 3rem;
-    height: 100vh;
+    padding: 3rem 3rem 0 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,14 +20,6 @@
     color: var(--orange);
 }
 
-.os-blur1{
-    left: 38rem;
-    top: 16rem;
-}
-.os-blur2{
-    top: 9rem;
-    left: 0;
-}
 .others{
     display: flex;
     flex-direction: column;
@@ -47,18 +38,15 @@
     height: 9rem;
     border-radius: 100%;
 }
-.others>span{
-    color: var(--grey);
-}
 .others .o-review1 {
     font-weight: bold;
     color: var(--orange);
 }
 
-
 .os-wrapper .swiper {
     width: 100%;
-    height: 70%;
+    height: auto;
+    padding: 1.25rem 0 3rem;
 }
 
 .os-wrapper .swiper-slide{
@@ -67,8 +55,29 @@
     justify-content: center;
 }
 
+.os-wrapper .swiper-pagination-bullet{
+    background: var(--gray);
+    opacity: .55;
+}
+
 .os-wrapper .swiper-pagination-bullet-active{
     background: var(--orange);
+    opacity: 1;
+}
+
+/* both blobs shipped stacked at .blur's default offsets, which put them above
+   the section entirely and hid the purple under the blue. split them: blue
+   drops down to sit with the heading, pink anchors the far corner. doubled-up
+   selectors so these beat .blur regardless of stylesheet order. */
+.blur.os-blur-blue {
+  top: -1.5rem;
+  left: 56%;
+}
+
+.blur.os-blur-pink {
+  top: auto;
+  bottom: -3rem;
+  left: 4rem;
 }
 
 @media screen and (max-width: 480px){
@@ -83,8 +92,5 @@
     .others>img{
         width: 70px;
         height: 70px;
-    }
-    .os-wrapper .swiper {
-        margin-top: -2rem!important; 
     }
   }

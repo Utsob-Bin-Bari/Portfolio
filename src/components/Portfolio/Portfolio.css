@@ -1,83 +1,265 @@
-.s-button {
-  width: 8rem;
-  height: 2rem;
-}
-
 .portfolio {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center; 
   flex-direction: column;
-  height: 70vh;
-  margin-top: 15rem;
+  gap: 3rem;
+  padding: 5rem 0 3rem;
 }
 
-.portfolio span:nth-of-type(1) {
+.pj-heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.pj-heading > :nth-child(1) {
   color: var(--black);
   font-size: 2rem;
   font-weight: bold;
 }
 
-.portfolio span:nth-of-type(2) {
+.pj-heading > :nth-child(2) {
   color: var(--orange);
   font-size: 2.5rem;
   font-weight: bold;
 }
 
-.portfolio .swiper {
-  overflow: visible !important;
+.pj-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
 }
 
-.portfolio-slider {
-  margin-top: 3rem;
+.pj-card {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.pj-card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.pj-shots {
+  width: 14rem;
+  flex-shrink: 0;
+  filter: drop-shadow(-6px 16px 24px rgba(36, 45, 73, 0.18))
+          drop-shadow(-2px 4px 8px rgba(36, 45, 73, 0.1));
+}
+
+.pj-shots .swiper {
+  overflow: hidden;
+  margin: 0;
+  padding: 0 0 2.25rem;
+}
+
+.pj-shots .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pj-shots .swiper-pagination-bullet {
+  background: var(--gray);
+  opacity: 0.55;
+}
+
+.pj-shots .swiper-pagination-bullet-active {
+  background: var(--orange);
+  opacity: 1;
+}
+
+.pj-shot {
   width: 100%;
-}
-
-.portfolio-slider .swiper-slide {
-  width: 20rem;
-}
-
-.portfolio img {
-  width: 19rem;
-  filter: drop-shadow(-12px 15px 13px rgba(0, 0, 0, 0.25));
+  height: 26rem;
+  object-fit: contain;
   border-radius: 19px;
 }
 
-
-.apk-buttons {
-  display: flex;
-  gap: 2rem;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.apk-button-item {
+.pj-shot-placeholder {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  background: #f2f4f7;
+  border: 4px dashed var(--blueCard);
+}
+
+.pj-shot-placeholder.pj-shot-dark {
+  background: #1c1c1c;
+  border-color: rgba(221, 248, 254, 0.35);
+}
+
+.pj-shot-placeholder span {
+  color: var(--gray);
+  font-size: 13px;
   text-align: center;
 }
 
-.apk-buttons span {
-  margin-top: 0.5rem;
-}
-@media (max-width: 480px) {
-  .portfolio{
-    margin-top:20rem!important;
-  }
-  .portfolio span:nth-of-type(1) {
-    font-size: 1.2rem!important;
-  }
-  .portfolio span:nth-of-type(2) {
-    font-size: 1.5rem!important;
-  }
-  .apk-buttons {
-    flex-direction: column; 
-  }
+.pj-shot-placeholder span:nth-of-type(1) {
+  color: var(--orange);
+  font-size: 15px;
+  font-weight: bold;
 }
 
+.pj-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
+.pj-head {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
 
+.pj-name {
+  color: var(--orange);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
+.pj-status {
+  color: #242d49;
+  background: var(--yellow);
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 0.25rem 0.7rem;
+  white-space: nowrap;
+}
+
+.pj-tagline {
+  color: var(--black);
+  font-size: 1.05rem;
+  font-weight: bold;
+  margin-top: 0.35rem;
+}
+
+.pj-company {
+  color: var(--gray);
+  font-size: 13px;
+  margin-top: 0.15rem;
+}
+
+.pj-points {
+  margin: 0.9rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.pj-points li {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 0.4rem;
+}
+
+.pj-points li::marker {
+  color: var(--orange);
+}
+
+.pj-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.pj-chip {
+  color: #242d49;
+  background: var(--blueCard);
+  font-size: 12px;
+  border-radius: 20px;
+  padding: 0.3rem 0.75rem;
+  white-space: nowrap;
+}
+
+.pj-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.4rem;
+  flex-wrap: wrap;
+}
+
+.pj-links .pj-button {
+  width: auto;
+  height: auto;
+  padding: 10px 22px;
+  font-size: 15px;
+}
+
+.pj-blur1 {
+  top: 8rem;
+  left: -18rem;
+}
+
+.pj-blur2 {
+  top: 60rem;
+  left: auto;
+  right: -16rem;
+}
+
+/* one blob per project, alternating pink/blue and sitting on the same side as
+   that card's phone. offsets centre each on its card - the cards are a uniform
+   573px because .pj-shot pins the height, so these stay put. */
+.pj-blur3 {
+  top: 87rem;
+  left: -18rem;
+}
+
+.pj-blur4 {
+  top: 119rem;
+  left: auto;
+  right: -16rem;
+}
+
+.pj-blur5 {
+  top: 151rem;
+  left: -18rem;
+}
+
+@media screen and (max-width: 480px) {
+  .portfolio {
+    padding: 2rem 0 1rem;
+    gap: 2rem;
+  }
+  .pj-heading > :nth-child(1) {
+    font-size: 1.2rem;
+  }
+  .pj-heading > :nth-child(2) {
+    font-size: 1.5rem;
+  }
+  .pj-list {
+    gap: 2.5rem;
+  }
+  .pj-card,
+  .pj-card:nth-child(even) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.2rem;
+  }
+  .pj-shots {
+    width: 100%;
+  }
+  .pj-shot {
+    height: 22rem;
+  }
+  .pj-name {
+    font-size: 1.25rem;
+  }
+  .pj-tagline {
+    font-size: 0.95rem;
+  }
+  .pj-points li {
+    font-size: 13px;
+  }
+  .pj-blur1,
+  .pj-blur2,
+  .pj-blur3,
+  .pj-blur4,
+  .pj-blur5 {
+    display: none;
+  }
+}

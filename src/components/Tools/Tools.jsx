@@ -1,22 +1,33 @@
 import React, { useContext } from "react";
 import "./Tools.css";
-import androidStudio from "../../img/androidStudio.png";
-import postman from "../../img/postman.png";
-import springToolSuits4 from "../../img/springToolSuits4.png";
 import visualStudio from "../../img/visualStudio.png";
+import androidStudio from "../../img/androidStudio.png";
 import xCode from "../../img/xCode.svg";
-import mysql from "../../img/mysql.png";
+import expo from "../../img/expo.svg";
+import firebase from "../../img/firebase.svg";
+import postman from "../../img/postman.png";
 import github from "../../img/gitHubBig.png";
-import sourceTree from "../../img/sourceTree.png";
-import mongoDB from '../../img/mongoDB.png';
+import cursor from "../../img/cursor.png";
+import claudeCode from "../../img/claudeCode.svg";
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
 import {Link} from 'react-scroll';
-const Tools = () => {
 
+const tools = [
+  { img: visualStudio, alt: "VS Code" },
+  { img: androidStudio, alt: "Android Studio" },
+  { img: xCode, alt: "XCode" },
+  { img: expo, alt: "Expo EAS" },
+  { img: firebase, alt: "Firebase" },
+  { img: postman, alt: "Postman" },
+  { img: github, alt: "GitHub" },
+  { img: cursor, alt: "Cursor" },
+  { img: claudeCode, alt: "Claude Code" },
+];
+
+const Tools = () => {
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
-
 
   return (
     <div className="tools" id="tools">
@@ -25,26 +36,30 @@ const Tools = () => {
           <span style={{ color: darkMode ? "white" : "" }}>
              Highly proficient in utilizing
           </span>
-          <span>Development & Testing Tools</span>
-          <spane>
-            Integrated Development Environment - Visual Studio Code & Spring Tool Suits 4
+          <span>Development &amp; Release Tools</span>
+          <span>
+            IDE and Editors - Visual Studio Code, Cursor, Claude Code
             <br />
-            Simulator and Emulator - xCode & Android Studio
+            Simulator and Emulator - XCode &amp; Android Studio
             <br />
-            Testing Tools - Postman, Insomnia, Compass & My SQL Workbench
+            Build and Release - Expo EAS (Build / Submit / Update), GitHub Actions, Play Console, App Store Connect
             <br />
-            DevOps tools - Git & Source Tree<br/>
+            Messaging - Firebase Cloud Messaging &amp; Notifee
+            <br />
+            Testing Tools - Postman &amp; Insomnia
+            <br />
+            Version Control - Git &amp; Source Tree
             <br/>
-          </spane>
+            <br/>
+          </span>
           <Link to="contact" smooth={true} spy={true}>
-            <button className="button s-button">Hire Me</button>
+            <button className="button s-button">Get in Touch</button>
           </Link>
           <div
             className="blur s-blur1"
             style={{ background: "#ABF1FF94" }}
           ></div>
         </div>
-
 
       </div>
       <div className="t-right">
@@ -55,36 +70,26 @@ const Tools = () => {
           transition={{ duration: 3.5, type: "spring" }}
           className="t-mainCircle"
         >
-          <div className="t-secCircle">
-            <img src={visualStudio} alt="" />
-          </div>
-          <div className="t-secCircle">
-            <img src={androidStudio} alt="" />
-          </div>
-          <div className="t-secCircle">
-            <img src={mongoDB} alt="" />
-          </div>
-          <div className="t-secCircle">
-            <img src={postman} alt="" />
-          </div>
-          <div className="t-secCircle">
-            <img src={xCode} alt="" />
-          </div>      
-          <div className="t-secCircle">
-            <img src={mysql} alt="" />
-          </div> 
-          <div className="t-secCircle">
-            <img src={github} alt="" />
-          </div> 
-          <div className="t-secCircle">
-            <img src={sourceTree} alt="" />
-          </div> 
-          <div className="t-secCircle">
-            <img src={springToolSuits4} alt="" />
-          </div> 
+          {tools.map((tool) => (
+            <div className="t-secCircle" key={tool.alt}>
+              <img src={tool.img} alt={tool.alt} title={tool.alt} />
+            </div>
+          ))}
         </motion.div>
         <div className="t-backCircle blueCircle"></div>
         <div className="t-backCircle yellowCircle"></div>
+        {/* .t-right is transformed on mobile, which traps this blob's z-index
+            inside a stacking context so it can no longer hide behind the dark
+            background the way the other blobs do - so skip it in dark mode */}
+        {!darkMode && (
+          <>
+            <div className="blur t-blur1" style={{ background: "skyblue" }}></div>
+            <div
+              className="blur t-wheelBlur"
+              style={{ background: "var(--purple)" }}
+            ></div>
+          </>
+        )}
       </div>
     </div>
   );

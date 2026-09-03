@@ -28,12 +28,14 @@ const Intro = () => {
           <span style={{ color: darkMode ? "white" : "" }}>Hey! I Am</span>
           <span>Utsob Bin Bari</span>
           <span>
-            MERN Stack Web and Mobile Apps Developer with project experience in designing and
-            development with DSA expertics. 
+            React Native engineer specialising in cross-platform mobile applications —
+            end-to-end ownership from design implementation through development,
+            optimisation, CI/CD and store release. Shipped production apps across
+            fintech, edtech, e-commerce and live sports streaming.
           </span>
         </div>
         <Link to="contact" smooth={true} spy={true}>
-          <button className="button i-button">Hire me</button>
+          <button className="button i-button">Get in Touch</button>
         </Link>
         <div className="f-icons">
           <a href="https://www.instagram.com/10_utsob?igsh=MWhscms4ZXhueTg0bw%3D%3D&utm_source=qr">
@@ -71,7 +73,7 @@ const Intro = () => {
           transition={transition}
           className="floating-div"
         >
-          <FloatinDiv img={developer} text1="MERN" text2="Developer" />
+          <FloatinDiv img={web} text1="iOS &" text2="Android" />
         </motion.div>
         <motion.div
           initial={{ left: "9rem", top: "18rem" }}
@@ -80,9 +82,9 @@ const Intro = () => {
           className="floating-div"
         >
           <FloatinDiv
-            img={web}
+            img={developer}
             text1="React Native "
-            text2="Developer"
+            text2="Engineer"
           />
         </motion.div>
         <div className="blur" style={{ background: "rgb(238 210 255)" }}></div>
@@ -102,5 +104,3 @@ const Intro = () => {
 };
 
 export default Intro;
-
-

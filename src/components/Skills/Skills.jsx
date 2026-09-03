@@ -1,22 +1,35 @@
 import React, { useContext } from "react";
 import "./Skills.css";
-import java from "../../img/java.png";
-import cPlusPlus from "../../img/c++.png";
 import react from "../../img/react.svg";
-import HTML from "../../img/HTML.png";
+import typescript from "../../img/typescript.svg";
 import javaScript from "../../img/javaScript.png";
 import express from "../../img/express.png";
-import spring from "../../img/springBoot2.svg";
+import redux from "../../img/redux.png";
+import tailwind from "../../img/tailwind.svg";
+import HTML from "../../img/HTML.png";
 import css from "../../img/css3.svg";
-import node from "../../img/nodejs.png";
+import cPlusPlus from "../../img/c++.png";
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
 import {Link} from 'react-scroll'
-const Skills = () => {
 
+// order drives placement - .s-mainCircle positions children by :nth-child, so
+// index 2 is the left slot and index 3 is the middle of the wheel
+const stack = [
+  { img: react, alt: "React" },
+  { img: javaScript, alt: "JavaScript" },
+  { img: typescript, alt: "TypeScript" },
+  { img: express, alt: "Express" },
+  { img: redux, alt: "Redux" },
+  { img: tailwind, alt: "TailwindCSS" },
+  { img: HTML, alt: "HTML" },
+  { img: css, alt: "CSS" },
+  { img: cPlusPlus, alt: "C++" },
+];
+
+const Skills = () => {
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
-
 
   return (
     <div className="skills" id="skills">
@@ -25,30 +38,30 @@ const Skills = () => {
           <span style={{ color: darkMode ? "white" : "" }}>
              Deep understanding of
           </span>
-          <span>Programming & Markup Languages</span>
-          <spane>
-            Programming Language for Competition - C++
+          <span>The Mobile Stack</span>
+          <span>
+            Mobile - React Native (Expo Workflow &amp; Bare Workflow), expo-router, React Navigation
             <br />
-            Frontend Programming Language - Java Script & React (Library)
+            Languages - TypeScript, JavaScript (ES6+), C++, C
             <br />
-            Backend Programming Language - Node.js (Java Script) & Spring (Java)
+            Animation - Reanimated, react-native-worklets, Gesture Handler
             <br />
-            Designing and Markup Language - CSS and HTML
+            State &amp; Persistence - Zustand, Redux, TanStack React Query, MMKV, SQLite
             <br />
-            Framework - React Native (Front End), Expo (React Native) Express.js (Backend) & Spring Boot (Back End)
+            Styling &amp; Web - TailwindCSS, React, HTML, CSS
             <br />
-            Others - C <br/>
+            Backend touchpoints - Express, oRPC, REST, JWT / OAuth2
             <br/>
-          </spane>
+            <br/>
+          </span>
           <Link to="contact" smooth={true} spy={true}>
-            <button className="button s-button">Hire Me</button>
+            <button className="button s-button">Get in Touch</button>
           </Link>
           <div
             className="blur s-blur1"
             style={{ background: "#ABF1FF94" }}
           ></div>
         </div>
-
 
       </div>
       <div className="s-right">
@@ -59,36 +72,23 @@ const Skills = () => {
           transition={{ duration: 3.5, type: "spring" }}
           className="s-mainCircle"
         >
-          <div className="s-secCircle">
-            <img src={react} alt="" />
-          </div>
-          <div className="s-secCircle">
-            <img src={java} alt="" />
-          </div>
-          <div className="s-secCircle">
-            <img src={cPlusPlus} alt="" />
-          </div>
-          <div className="s-secCircle">
-            <img src={css} alt="" />
-          </div>
-          <div className="s-secCircle">
-            <img src={HTML} alt="" />
-          </div>      
-          <div className="s-secCircle">
-            <img src={javaScript} alt="" />
-          </div> 
-          <div className="s-secCircle">
-            <img src={spring} alt="" />
-          </div> 
-          <div className="s-secCircle">
-            <img src={express} alt="" />
-          </div> 
-          <div className="s-secCircle">
-            <img src={node} alt="" />
-          </div> 
+          {stack.map((item) => (
+            <div className="s-secCircle" key={item.alt}>
+              <img src={item.img} alt={item.alt} title={item.alt} />
+            </div>
+          ))}
         </motion.div>
         <div className="s-backCircle blueCircle"></div>
         <div className="s-backCircle yellowCircle"></div>
+        {/* .s-right is transformed on mobile, which traps this blob's z-index
+            inside a stacking context so it can no longer hide behind the dark
+            background the way the other blobs do - so skip it in dark mode */}
+        {!darkMode && (
+          <div
+            className="blur s-wheelBlur"
+            style={{ background: "var(--purple)" }}
+          ></div>
+        )}
       </div>
     </div>
   );

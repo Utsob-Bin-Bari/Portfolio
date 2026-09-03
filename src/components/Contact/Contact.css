@@ -3,29 +3,33 @@
     font-size: 2.5rem !important;
     font-weight: bold;
   }
-  
+
   .contact-form {
     padding: 0 3rem 0 3rem;
     display: flex;
-    height: 80vh;
+    /* was 80vh, which left ~400px of blank page under the Send button before
+       the footer wave. sized to the form instead; the padding-bottom is the
+       only thing separating it from the wave, which the footer then pulls
+       7rem back up over */
     margin-top: 4rem;
     padding-top: 3rem;
+    padding-bottom: 5rem;
   }
-  
+
   .c-right {
     display: flex;
     justify-content: center;
     position: relative;
     flex: 1;
   }
-  
+
   .c-right > form {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     align-items: center;
   }
-  
+
   .c-right .user {
     width: 20rem;
     height: 2rem;
@@ -35,16 +39,43 @@
     border-radius: 8px;
     font-size: 16px;
   }
-  
+
   textarea {
     height: 4rem !important;
   }
-  
+
+  .c-status {
+    max-width: 20rem;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: -1rem;
+  }
+
+  .c-status-ok {
+    color: var(--orange);
+    font-weight: bold;
+  }
+
+  .c-status-error {
+    color: #d0342c;
+  }
+
+  .c-status-error a {
+    color: var(--orange);
+    font-weight: bold;
+  }
+
+  .c-right input[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
   .c-blur1 {
     top: 1rem;
     left: 8rem;
   }
-  
+
   @media screen and (max-width: 480px) {
     .contact-form {
       padding: 0;
@@ -52,9 +83,8 @@
       gap: 2rem!important;
       height: 30rem!important;
     }
-  
+
     .c-right .user {
       width: 16rem;
     }
   }
-  

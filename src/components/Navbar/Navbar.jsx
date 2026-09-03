@@ -18,13 +18,18 @@ const navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="services" spy={true} smooth={true}>
-                Serivces
+              <Link to="expertise" spy={true} smooth={true}>
+                Expertise
               </Link>
             </li>
             <li>
-              <Link to="experience" spy={true} smooth={true}>
-                Experience
+              <Link to="work" spy={true} smooth={true}>
+                Work
+              </Link>
+            </li>
+            <li>
+              <Link to="portfolio" spy={true} smooth={true}>
+                Projects
               </Link>
             </li>
             <li>
@@ -32,7 +37,6 @@ const navbar = () => {
                 Skills
               </Link>
             </li>
-            
             <li>
               <Link to="tools" spy={true} smooth={true}>
                 Tools
@@ -48,13 +52,6 @@ const navbar = () => {
                 Contest
               </Link>
             </li>
-            <li>
-              <Link to="portfolio" spy={true} smooth={true}>
-                Projects
-              </Link>
-            </li>
-            
-            
             <li>
               <Link to="education" spy={true} smooth={true}>
                 Education

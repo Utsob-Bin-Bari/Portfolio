@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  # react-scripts 5 builds cleanly here; pinned so a change to Netlify's
+  # default image can't silently change the build.
+  NODE_VERSION = "22"
+
+# CRA fingerprints everything under /static/, so those URLs can never go stale.
+# index.html deliberately keeps Netlify's default revalidate-every-time policy,
+# which is what lets a new deploy show up immediately.
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# No SPA catch-all redirect on purpose: navigation here is react-scroll anchors
+# on one page, not a client-side router. A /* -> /index.html rule would turn
+# every genuine 404 into a 200 serving the homepage.

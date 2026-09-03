@@ -12,8 +12,13 @@ const Footer = () => {
     <div className="footer">
       <img src={Wave} alt="" style={{ width: "100%" }} />
       <div className="f-content">
-        <span>utsobbinbari@gmail.com</span>
-        <span>Mobile: +8801316-312208</span>
+        <a className="f-link" href="mailto:utsobbinbari@gmail.com">
+          utsobbinbari@gmail.com
+        </a>
+        {/* tel: needs the bare digits - the dash is display only */}
+        <a className="f-link" href="tel:+8801316312208">
+          Mobile: +8801316-312208
+        </a>
         <div className="f-icons">
           <a href="https://www.instagram.com/10_utsob?igsh=MWhscms4ZXhueTg0bw%3D%3D&utm_source=qr">
           <Insta color="white" size={"3rem"} />
@@ -38,4 +43,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

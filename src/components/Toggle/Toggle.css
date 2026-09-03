@@ -4,17 +4,33 @@
     border: 3px solid var(--orange);
     border-radius: 1rem;
     position: relative;
-    padding: 2px;
+    padding: 5px 7px;
+    gap: 0.5rem;
+    overflow: hidden;
     cursor: pointer;
-
 }
-.toggle>*{
+
+.t-icon{
     width: 1rem;
     height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--orange);
+    flex-shrink: 0;
 }
+
+.t-icon svg{
+    width: 1rem;
+    height: 1rem;
+}
+
 .t-button{
+    width: 1rem;
+    height: 1rem;
     border-radius: 100%;
     background: var(--orange);
     position: absolute;
+    top: 5px;
+    left: 7px;
 }

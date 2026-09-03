@@ -6,82 +6,99 @@ import "swiper/css";
 import { Pagination } from "swiper/modules";
 import "swiper/css/pagination";
 
-import management from "../../img/management.jpg";
-import monkeyType from "../../img/monkeyType.png";
-import language from "../../img/language.jpg";
-import gamming from "../../img/gamming.jpg";
+import ai from "../../img/ai.jpg";
+import github from "../../img/gitHubBig.png";
 import problem from "../../img/problem.jpg";
+import language from "../../img/language.jpg";
+import monkeyType from "../../img/monkeyType.png";
+import management from "../../img/management.jpg";
 import volleyBall from "../../img/volleyball.jpg";
+import gamming from "../../img/gamming.jpg";
 
 const OtherSkills = () => {
   const clients = [
     {
-    img: problem,
-    review1:
-        "Problem Solving",
-    review2:
-        "Participating Competitive Programming for 2+ year ",
-    review3:
-        "Has deep knowledge of Data Structure & Algorithms",
+      img: ai,
+      review1:
+        "AI-Assisted Development",
+      review2:
+        "Ship production code in an AI-first environment with Claude Code & Cursor",
+      review3:
+        "Agent configuration, repository-level context, and review of AI-generated changes",
     },
     {
-      img: monkeyType,
+      img: github,
       review1:
-      "Typing",
+        "Disciplined Git Workflow",
       review2:
-      "Can Type upto 100 WPM",
+        "Feature branches, Conventional Commits, pull-request review",
       review3:
-      "Can maintain 80 WPM for a prolonged period",
+        "405 commits shipping one application from first screen to store submission",
+    },
+    {
+      img: problem,
+      review1:
+        "Problem Solving",
+      review2:
+        "Participating Competitive Programming for 3 years ",
+      review3:
+        "Has deep knowledge of Data Structure & Algorithms",
     },
     {
       img: language,
       review1:
-      "Language",
+        "Language",
       review2:
-      "Can write and speak Bangla & English fluently",
+        "Can write and speak Bangla & English fluently",
       review3:
-      "Can understand and carry small talk in Hindy",
+        "Can understand and carry small talk in Hindy",
     },
     {
-      img: volleyBall,
+      img: monkeyType,
       review1:
-        "Leadership & Communication",
+        "Typing",
       review2:
-       "Play as captain on Titumir hall Volleyball Team 2023",
+        "Can Type upto 100 WPM",
       review3:
-        "Lead BUET Titumir Hall Athletics Team 2023",
+        "Can maintain 80 WPM for a prolonged period",
     },
     {
       img: management,
       review1:
         "People Management",
       review2:
-        "Served as a mess manager of Titumir hall",
+        "Served as a mess manager of Titumir hall serving 450 students",
       review3:
         "Fimiliar with corporate enviornment",
     },
-    
     {
-        img: gamming,
-        review1:
+      img: volleyBall,
+      review1:
+        "Leadership & Communication",
+      review2:
+        "Play as captain on Titumir hall Volleyball Team 2023",
+      review3:
+        "Lead BUET Titumir Hall Athletics Team 2023",
+    },
+    {
+      img: gamming,
+      review1:
         "Competitive & Puntual",
-        review2:
+      review2:
         "Participate eSport for 3 years",
-        review3:
+      review3:
         "Represented Bangladesh at International Level PMNC 2022",
     },
-    
-    
   ];
 
   return (
     <div className="os-wrapper" id="otherSkills">
       <div className="os-heading">
         <span>Other Skills</span>
-      <div className="blur t-blur1" style={{ background: "var(--purple)" }}></div>
-      <div className="blur t-blur2" style={{ background: "skyblue" }}></div>
+      <div className="blur os-blur-pink" style={{ background: "var(--purple)" }}></div>
+      <div className="blur os-blur-blue" style={{ background: "skyblue" }}></div>
       </div>
-      
+
       <Swiper
         modules={[Pagination]}
         slidesPerView={1}
