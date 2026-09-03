@@ -105,16 +105,17 @@ The form sends mail through [EmailJS](https://www.emailjs.com) — no backend re
    REACT_APP_EMAILJS_PUBLIC_KEY=...
    ```
 
-   The EmailJS public key is designed to be client-side, so committing it is fine.
+   The EmailJS public key is designed to be client-side, so committing it is fine. Until you point
+   these at your own account, submissions go to the original owner's EmailJS account.
 
 ### If the form stops sending
 
-EmailJS proxies through whichever mail provider you connected, and **that connection expires**. A
-Gmail-backed service returns `HTTP 412 — Gmail_API: Invalid grant. Please reconnect your Gmail
-account`, which no code change can work around: reconnect the service in the EmailJS dashboard under
-**Email Services**.
+EmailJS proxies through whichever mail provider you connected, and **that connection breaks on its
+own**. No code change works around any of the failures below — each is fixed in the EmailJS
+dashboard under **Email Services**.
 
-You can check the credentials without opening a browser:
+Check the whole path without opening a browser. EmailJS rejects non-browser callers, so the
+`origin` header is required:
 
 ```bash
 curl -i -X POST https://api.emailjs.com/api/v1.0/email/send \
@@ -124,12 +125,22 @@ curl -i -X POST https://api.emailjs.com/api/v1.0/email/send \
        "template_params":{"user_name":"test","user_email":"you@example.com","message":"test"}}'
 ```
 
-`200 OK` means the whole path works. A `4xx` body names the failing piece.
+`200 OK` means the whole path works. A `4xx` body names the failing piece — note that it names only
+the *first* piece it cannot resolve, so a bad service ID masks anything wrong with the template.
+
+| Response | Cause | Fix |
+| --- | --- | --- |
+| `412 Gmail_API: Invalid grant` | The Gmail OAuth token expired. | Reconnect the Gmail service. |
+| `412 Gmail_API: Request had insufficient authentication scopes` | The service was reconnected, but Google's consent screen was accepted without **Send email on your behalf**. | Disconnect, reconnect, and tick that permission. |
+| `The service ID not found` | That service does not exist in the account the public key belongs to. | See below. |
+
+A dashboard gotcha worth knowing: **EmailJS will not save a service whose test send fails.** So a
+service ID copied out of an *Edit Service* dialog that is showing a `412` was never persisted, and
+the live form gets `The service ID not found` rather than the `412` the dashboard shows. Fix the
+Gmail connection first, save, then copy the ID that the saved service ends up with.
 
 The form surfaces failures to the visitor and offers a `mailto:` fallback, so a broken provider
 connection no longer loses messages silently.
-
-Until you do this, submissions go to the original owner's EmailJS account.
 
 ## Deploying
 

@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./Contact.css";
 import emailjs from "@emailjs/browser";
 
-const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_774i93e";
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_mh49faf";
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "template_8sv2m9j";
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "_4auPNIud4mouhx1H";
 
@@ -22,10 +22,6 @@ const Contact = () => {
     const email = (data.get("user_email") || "").toString().trim();
     const message = (data.get("message") || "").toString().trim();
 
-    // EmailJS resolves {{placeholders}} by name, and a template built from the
-    // current default expects name/email/title while an older one expects
-    // user_name/user_email. Anything unused is simply ignored, so sending both
-    // spellings keeps this working whichever template the dashboard holds.
     const templateParams = {
       name,
       email,
