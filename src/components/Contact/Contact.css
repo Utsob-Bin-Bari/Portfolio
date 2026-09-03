@@ -7,10 +7,6 @@
   .contact-form {
     padding: 0 3rem 0 3rem;
     display: flex;
-    /* was 80vh, which left ~400px of blank page under the Send button before
-       the footer wave. sized to the form instead; the padding-bottom is the
-       only thing separating it from the wave, which the footer then pulls
-       7rem back up over */
     margin-top: 4rem;
     padding-top: 3rem;
     padding-bottom: 5rem;
@@ -20,6 +16,7 @@
     display: flex;
     justify-content: center;
     position: relative;
+    z-index: 1;
     flex: 1;
   }
 
@@ -66,9 +63,48 @@
     font-weight: bold;
   }
 
-  .c-right input[type="submit"]:disabled {
+  .c-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 9rem;
+    min-height: 2.6rem;
+    font-family: inherit;
+  }
+
+  .c-right .user:disabled,
+  .c-right .c-submit:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  .c-right .c-submit:disabled:hover {
+    background: linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%);
+    border: none;
+    color: white;
+  }
+
+  .c-spinner {
+    width: 0.9rem;
+    height: 0.9rem;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: c-spin 0.7s linear infinite;
+  }
+
+  @keyframes c-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .c-spinner {
+      animation-duration: 2.4s;
+    }
   }
 
   .c-blur1 {
@@ -81,7 +117,7 @@
       padding: 0;
       flex-direction: column;
       gap: 2rem!important;
-      height: 30rem!important;
+      min-height: 30rem;
     }
 
     .c-right .user {

@@ -6,6 +6,10 @@
   margin-top: -7rem;
 }
 
+.footer > img {
+  pointer-events: none;
+}
+
 .f-content {
   position: absolute;
   display: flex;
@@ -21,7 +25,6 @@
 .f-link {
   color: inherit;
   text-decoration: none;
-  /* keeps the tap target taller than the text itself on touch devices */
   padding: 0.2rem 0.6rem;
 }
 
