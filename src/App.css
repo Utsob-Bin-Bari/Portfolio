@@ -19,9 +19,11 @@
   color: var(--black);
 }
 
-/* Dark mode background. A fixed layer rather than background-attachment:
-   fixed, which repaints on every scroll and is ignored by iOS Safari.
-   z-index -10 keeps it under the .blur glows (-9) and stat-circle rings (-1). */
+.scroll-link {
+  color: inherit;
+  text-decoration: none;
+}
+
 html[data-theme="dark"] body::before {
   content: "";
   position: fixed;
@@ -31,7 +33,6 @@ html[data-theme="dark"] body::before {
   background: linear-gradient(160deg, var(--darkBg) 0%, #151a35 50%, #1e1236 100%);
 }
 
-/* The pastel blobs are tuned for white; dim them into soft glows on dark. */
 html[data-theme="dark"] .blur {
   opacity: 0.3;
 }

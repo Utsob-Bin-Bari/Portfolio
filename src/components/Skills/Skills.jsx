@@ -10,8 +10,8 @@ import HTML from "../../img/stack/HTML.webp";
 import css from "../../img/stack/css3.svg";
 import cPlusPlus from "../../img/stack/c++.webp";
 import { themeContext } from "../../Context";
-import { motion } from "framer-motion";
-import {Link} from 'react-scroll'
+import { m } from "framer-motion";
+import ScrollLink from "../ScrollLink/ScrollLink";
 
 const stack = [
   { img: react, alt: "React" },
@@ -52,9 +52,9 @@ const Skills = () => {
             <br/>
             <br/>
           </span>
-          <Link to="contact" smooth={true} spy={true}>
+          <ScrollLink to="contact">
             <button className="button s-button">Get in Touch</button>
-          </Link>
+          </ScrollLink>
           <div
             className="blur s-blur1"
             style={{ background: "#ABF1FF94" }}
@@ -63,7 +63,7 @@ const Skills = () => {
 
       </div>
       <div className="s-right">
-        <motion.div
+        <m.div
           initial={{ rotate: -45 }}
           whileInView={{ rotate: 0 }}
           viewport={{ margin: "-40px" }}
@@ -72,10 +72,10 @@ const Skills = () => {
         >
           {stack.map((item) => (
             <div className="s-secCircle" key={item.alt}>
-              <img src={item.img} alt={item.alt} title={item.alt} />
+              <img src={item.img} alt={item.alt} title={item.alt} loading="lazy" decoding="async" />
             </div>
           ))}
-        </motion.div>
+        </m.div>
         <div className="s-backCircle blueCircle"></div>
         <div className="s-backCircle yellowCircle"></div>
         {!darkMode && (

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import App from './App';
 import { ThemeProvider } from './Context';
 
@@ -28,7 +29,9 @@ const hideSplash = () => {
 waitForFont().then(() => {
   ReactDOM.render(
     <ThemeProvider>
-      <App />
+      <LazyMotion features={domAnimation} strict>
+        <App />
+      </LazyMotion>
     </ThemeProvider>,
     document.getElementById('root')
   );

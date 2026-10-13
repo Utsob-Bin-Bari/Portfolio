@@ -42,9 +42,8 @@
       type="font/woff2"
       crossorigin
     />
-    <!-- Pick the theme before first paint so the splash never flashes the
-         wrong colour. A saved toggle choice wins over the OS preference.
-         src/Context.js reads data-theme back as its initial state. -->
+    <link rel="preload" href="%PUBLIC_URL%/img/Vector1.webp" as="image" type="image/webp" />
+    <link rel="preload" href="%PUBLIC_URL%/img/Vector2.webp" as="image" type="image/webp" />
     <script>
       (function () {
         var theme;

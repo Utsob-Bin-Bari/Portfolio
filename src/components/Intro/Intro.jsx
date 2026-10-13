@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import "./Intro.css";
-import Vector1 from "../../img/intro/Vector1.webp";
-import Vector2 from "../../img/intro/Vector2.webp";
 import boy from "../../img/intro/boy.webp";
 import web from "../../img/intro/web.webp";
 import developer from "../../img/intro/developer.webp";
@@ -13,8 +11,11 @@ import Github from "@iconscout/react-unicons/icons/uil-github";
 import LinkedIn from "@iconscout/react-unicons/icons/uil-linkedin";
 import WhatsApp from "@iconscout/react-unicons/icons/uil-whatsapp";
 import { themeContext } from "../../Context";
-import { motion } from "framer-motion";
-import { Link } from "react-scroll";
+import { m } from "framer-motion";
+import ScrollLink from "../ScrollLink/ScrollLink";
+
+const Vector1 = `${process.env.PUBLIC_URL}/img/Vector1.webp`;
+const Vector2 = `${process.env.PUBLIC_URL}/img/Vector2.webp`;
 
 const Intro = () => {
   const transition = { duration: 2, type: "spring" };
@@ -34,9 +35,9 @@ const Intro = () => {
             fintech, edtech, e-commerce and live sports streaming.
           </span>
         </div>
-        <Link to="contact" smooth={true} spy={true}>
+        <ScrollLink to="contact">
           <button className="button i-button">Get in Touch</button>
-        </Link>
+        </ScrollLink>
         <div className="f-icons">
           <a href="https://www.instagram.com/10_utsob?igsh=MWhscms4ZXhueTg0bw%3D%3D&utm_source=qr">
             <Insta color="var(--orange)" size={"3rem"} />
@@ -58,24 +59,24 @@ const Intro = () => {
       <div className="i-right">
         <img src={Vector1} alt="" />
         <img src={Vector2} alt="" />
-        <img src={boy} alt="" />
-        <motion.div
+        <img src={boy} alt="" fetchpriority="high" />
+        <m.div
           initial={{ left: "-15%", top: "10" }}
           whileInView={{ left: "3%" }}
           transition={transition}
           className="floating-div"
         >
           <FloatinDiv img={idea} text1="Problem" text2="Solver" />
-        </motion.div>
-        <motion.div
+        </m.div>
+        <m.div
           initial={{ top: "-4%", left: "74%" }}
           whileInView={{ left: "68%" }}
           transition={transition}
           className="floating-div"
         >
           <FloatinDiv img={web} text1="iOS &" text2="Android" />
-        </motion.div>
-        <motion.div
+        </m.div>
+        <m.div
           initial={{ left: "9rem", top: "18rem" }}
           whileInView={{ left: "0rem" }}
           transition={transition}
@@ -86,7 +87,7 @@ const Intro = () => {
             text1="React Native "
             text2="Engineer"
           />
-        </motion.div>
+        </m.div>
         <div className="blur" style={{ background: "rgb(238 210 255)" }}></div>
         <div
           className="blur"

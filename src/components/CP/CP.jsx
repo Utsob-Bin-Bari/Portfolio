@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { themeContext } from "../../Context";
-import axios from "axios";
 import "./CP.css";
 
 const CP = () => {
@@ -11,10 +10,14 @@ const CP = () => {
   const codechefRating = 1655;
 
   useEffect(() => {
-    axios.get("https://codeforces.com/api/user.info?handles=Godspeed_17")
+    fetch("https://codeforces.com/api/user.info?handles=Godspeed_17")
       .then(response => {
-        if (response.data.result && response.data.result.length > 0) {
-          setCodeforcesRating(response.data.result[0].maxRating);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        if (data.result && data.result.length > 0) {
+          setCodeforcesRating(data.result[0].maxRating);
         } else {
           setCodeforcesRating("N/A");
         }

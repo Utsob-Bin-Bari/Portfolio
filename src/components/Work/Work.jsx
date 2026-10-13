@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./Work.css";
 import { themeContext } from "../../Context";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const roles = [
   {
@@ -58,7 +58,7 @@ const Work = () => {
 
       <div className="wk-timeline">
         {roles.map((role, index) => (
-          <motion.div
+          <m.div
             className="wk-item"
             key={role.company}
             initial={{ opacity: 0, y: 40 }}
@@ -80,7 +80,7 @@ const Work = () => {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </m.div>
         ))}
       </div>
 

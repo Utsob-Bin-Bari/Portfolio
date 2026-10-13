@@ -10,7 +10,15 @@ import WhatsApp from "@iconscout/react-unicons/icons/uil-whatsapp";
 const Footer = () => {
   return (
     <div className="footer">
-      <img src={Wave} alt="" style={{ width: "100%" }} />
+      <img
+        src={Wave}
+        alt=""
+        width="2275"
+        height="849"
+        loading="lazy"
+        decoding="async"
+        style={{ width: "100%", height: "auto" }}
+      />
       <div className="f-content">
         <a className="f-link" href="mailto:utsobbinbari@gmail.com">
           utsobbinbari@gmail.com

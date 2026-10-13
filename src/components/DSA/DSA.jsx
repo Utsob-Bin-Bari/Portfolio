@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./DSA.css";
 import { themeContext } from "../../Context";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Card from "../Card/Card";
 
 const topics = [
@@ -53,7 +53,7 @@ const DSA = () => {
 
       <div className="cards">
         {topics.map((topic, index) => (
-          <motion.div
+          <m.div
             key={topic.heading}
             initial={{ opacity: 0, ...topic.from }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -61,7 +61,7 @@ const DSA = () => {
             transition={{ type: "spring", stiffness: 42, damping: 13, delay: index * 0.12 }}
           >
             <Card heading={topic.heading} detail={topic.detail} service={false} />
-          </motion.div>
+          </m.div>
         ))}
 
         <div className="blur s-blur2" style={{ background: "var(--purple)" }}></div>

@@ -57,7 +57,7 @@ const Education = () => {
           return (
             <SwiperSlide key={index}>
               <div className="education">
-                <img src={client.img} alt="" />
+                <img src={client.img} alt="" decoding="async" />
                 <span>{client.review1}</span>
                 <span>{client.review2}</span>
                 <span>{client.review3}</span>
