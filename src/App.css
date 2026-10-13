@@ -9,6 +9,7 @@
     --boxShadow : 0px 19px 60px rgb(0 0 0 / 8%);
     --orangeCard: rgba(252, 166, 31, 0.45);
     --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+    --darkBg: #0d1020;
 }
 
 .App {
@@ -27,7 +28,7 @@ html[data-theme="dark"] body::before {
   inset: 0;
   z-index: -10;
   pointer-events: none;
-  background: linear-gradient(160deg, #0d1020 0%, #151a35 50%, #1e1236 100%);
+  background: linear-gradient(160deg, var(--darkBg) 0%, #151a35 50%, #1e1236 100%);
 }
 
 /* The pastel blobs are tuned for white; dim them into soft glows on dark. */

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useLayoutEffect, useReducer } from "react";
 export const themeContext = createContext();
 
 // Must match the key used by the pre-paint script in public/index.html.
@@ -51,7 +51,9 @@ export const ThemeProvider = (props) => {
     return () => query.removeEventListener("change", onChange);
   }, []);
 
-  useEffect(() => {
+  // Layout effect so <html data-theme> is updated inside the same commit:
+  // the toggle's view transition snapshots the DOM right after it.
+  useLayoutEffect(() => {
     const theme = darkMode ? "dark" : "light";
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
