@@ -12,6 +12,11 @@
     --darkBg: #0d1020;
 }
 
+html[data-theme="dark"] {
+  --black: #f1f3f9;
+  --gray: #c5cbdb;
+}
+
 .App {
   font-family: 'Arima Madurai Regular', sans-serif;
   padding: 0.5rem 3.5rem;

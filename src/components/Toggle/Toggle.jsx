@@ -47,9 +47,10 @@ const Toggle = () => {
     const toLight = darkMode;
     const rect = e.currentTarget.getBoundingClientRect();
 
-    document
-      .startViewTransition(toggle)
-      .ready.then(() => {
+    const transition = document.startViewTransition(toggle);
+
+    transition.ready
+      .then(() => {
         const view = transitionBox("root", {
           left: 0,
           top: 0,
@@ -66,16 +67,18 @@ const Toggle = () => {
         const closed = `ellipse(${source.width / 2}px ${source.height / 2}px at ${x}px ${y}px)`;
         const open = `ellipse(${radius}px ${radius}px at ${x}px ${y}px)`;
 
-        document.documentElement.animate(
+        const reveal = document.documentElement.animate(
           { clipPath: toLight ? [closed, open] : [open, closed] },
           {
             duration: REVEAL_MS,
             easing: REVEAL_EASING,
+            fill: "forwards",
             pseudoElement: toLight
               ? "::view-transition-new(root)"
               : "::view-transition-old(root)",
           }
         );
+        transition.finished.then(() => reveal.cancel());
       })
       .catch(() => {});
   };
