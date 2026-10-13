@@ -169,6 +169,22 @@
   }
 }
 
+@media screen and (min-width: 1024px) {
+  .Intro {
+    column-gap: 3rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .i-left {
+    flex: 0 0 calc(50% - 1.5rem);
+  }
+  .i-right {
+    flex: 0 1 32.5rem;
+    margin-inline: auto;
+  }
+}
+
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
   .i-left {
     min-width: 0;
