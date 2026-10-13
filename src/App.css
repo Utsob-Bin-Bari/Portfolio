@@ -1,9 +1,3 @@
-@font-face {
-  font-family: 'Arima Madurai Regular';
-  src: url('../src/fonts/arima-madurai-regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 :root
 {
   --yellow: #F5C32C;
@@ -22,6 +16,23 @@
   padding: 0.5rem 3.5rem;
   overflow: hidden;
   color: var(--black);
+}
+
+/* Dark mode background. A fixed layer rather than background-attachment:
+   fixed, which repaints on every scroll and is ignored by iOS Safari.
+   z-index -10 keeps it under the .blur glows (-9) and stat-circle rings (-1). */
+html[data-theme="dark"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  background: linear-gradient(160deg, #0d1020 0%, #151a35 50%, #1e1236 100%);
+}
+
+/* The pastel blobs are tuned for white; dim them into soft glows on dark. */
+html[data-theme="dark"] .blur {
+  opacity: 0.3;
 }
 
 .button {
