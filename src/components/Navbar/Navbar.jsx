@@ -1,7 +1,7 @@
 import React from "react";
 import Toggle from "../Toggle/Toggle";
 import "./Navbar.css";
-import { Link } from "react-scroll";
+import ScrollLink from "../ScrollLink/ScrollLink";
 const navbar = () => {
   return (
     <div className="n-wrapper" id="Navbar">
@@ -13,55 +13,55 @@ const navbar = () => {
         <div className="n-list">
           <ul style={{ listStyleType: "none" }}>
             <li>
-              <Link activeClass="active" to="Navbar" spy={true} smooth={true}>
+              <ScrollLink to="Navbar">
                 Home
-              </Link>
+              </ScrollLink>
             </li>
             <li>
-              <Link to="expertise" spy={true} smooth={true}>
+              <ScrollLink to="expertise">
                 Expertise
-              </Link>
+              </ScrollLink>
             </li>
             <li>
-              <Link to="work" spy={true} smooth={true}>
+              <ScrollLink to="work">
                 Work
-              </Link>
+              </ScrollLink>
             </li>
             <li>
-              <Link to="portfolio" spy={true} smooth={true}>
+              <ScrollLink to="portfolio">
                 Projects
-              </Link>
+              </ScrollLink>
             </li>
             <li>
-              <Link to="skills" spy={true} smooth={true}>
+              <ScrollLink to="skills">
                 Skills
-              </Link>
+              </ScrollLink>
             </li>
             <li>
-              <Link to="tools" spy={true} smooth={true}>
+              <ScrollLink to="tools">
                 Tools
-              </Link>
+              </ScrollLink>
             </li>
             <li>
-              <Link to="DSA" spy={true} smooth={true}>
+              <ScrollLink to="DSA">
                 DSA
-              </Link>
+              </ScrollLink>
             </li>
             <li>
-              <Link to="CP" spy={true} smooth={true}>
+              <ScrollLink to="CP">
                 Contest
-              </Link>
+              </ScrollLink>
             </li>
             <li>
-              <Link to="education" spy={true} smooth={true}>
+              <ScrollLink to="education">
                 Education
-              </Link>
+              </ScrollLink>
             </li>
           </ul>
         </div>
-        <Link to="contact" spy={true} smooth={true}>
+        <ScrollLink to="contact">
         <button className="button n-button">Contact</button>
-        </Link>
+        </ScrollLink>
       </div>
     </div>
   );

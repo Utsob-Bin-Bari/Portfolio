@@ -182,3 +182,12 @@
     display: none;
   }
 }
+
+@media screen and (min-width: 481px) and (max-width: 1023px) {
+  .wk-heading > :nth-child(1) {
+    font-size: var(--heading-sm);
+  }
+  .wk-heading > :nth-child(2) {
+    font-size: var(--heading-lg);
+  }
+}

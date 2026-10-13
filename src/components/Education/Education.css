@@ -89,3 +89,9 @@
         font-size:1.5rem!important;
     }
   }
+
+@media screen and (min-width: 481px) and (max-width: 1023px) {
+    .e-heading > * {
+        font-size: var(--heading-lg);
+    }
+}

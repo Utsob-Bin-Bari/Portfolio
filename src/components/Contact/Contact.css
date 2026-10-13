@@ -37,6 +37,16 @@
     font-size: 16px;
   }
 
+  html[data-theme="dark"] .c-right .user {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+  }
+
+  html[data-theme="dark"] .c-right .user::placeholder {
+    color: var(--gray);
+    opacity: 1;
+  }
+
   textarea {
     height: 4rem !important;
   }
@@ -122,5 +132,47 @@
 
     .c-right .user {
       width: 16rem;
+    }
+  }
+
+  @media screen and (max-width: 1199px) {
+    .c-right .user {
+      width: auto;
+      align-self: stretch;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .c-right > form {
+      width: min(100%, 16.7rem);
+    }
+  }
+
+  @media screen and (min-width: 481px) and (max-width: 1023px) {
+    .contact-form {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .contact-form .weight {
+      font-size: var(--heading-lg) !important;
+    }
+    .c-right {
+      flex: none;
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 481px) and (max-width: 1199px) {
+    .c-right > form {
+      width: min(100%, 36rem);
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1199px) {
+    .contact-form {
+      gap: 3rem;
     }
   }

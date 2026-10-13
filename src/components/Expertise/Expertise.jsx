@@ -6,7 +6,7 @@ import realtime from "../../img/expertise/realtime.svg";
 import release from "../../img/expertise/release.svg";
 
 import { themeContext } from "../../Context";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Resume from './Utsob_Bin_Bari_CV.pdf';
 
 const areas = [
@@ -55,7 +55,7 @@ const Expertise = () => {
 
       <div className="cards">
         {areas.map((area, index) => (
-          <motion.div
+          <m.div
             key={area.heading}
             initial={{ opacity: 0, ...area.from }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -68,7 +68,7 @@ const Expertise = () => {
               detail={area.detail}
               service={true}
             />
-          </motion.div>
+          </m.div>
         ))}
 
         <div className="blur s-blur2" style={{ background: "var(--purple)" }}></div>

@@ -108,7 +108,7 @@ const OtherSkills = () => {
           return (
             <SwiperSlide key={index}>
               <div className="others">
-                <img src={client.img} alt="" />
+                <img src={client.img} alt="" decoding="async" />
                 <span className="o-review1">{client.review1}</span>
                 <span>{client.review2}</span>
                 <span>{client.review3}</span>

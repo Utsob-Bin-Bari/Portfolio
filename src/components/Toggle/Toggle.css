@@ -8,6 +8,13 @@
     gap: 0.5rem;
     overflow: hidden;
     cursor: pointer;
+    background: white;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+html[data-theme="dark"] .toggle{
+    background: var(--darkBg);
 }
 
 .t-icon{
@@ -33,4 +40,26 @@
     position: absolute;
     top: 5px;
     left: 7px;
+}
+
+::view-transition-old(root),
+::view-transition-new(root){
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+html[data-theme="dark"]::view-transition-old(root){
+    z-index: 1;
+}
+
+.toggle{
+    view-transition-name: theme-toggle;
+}
+
+::view-transition-old(theme-toggle){
+    display: none;
+}
+
+::view-transition-new(theme-toggle){
+    animation: none;
 }

@@ -104,3 +104,18 @@
           margin-top: .7rem!important;
       }
   }
+
+  @media screen and (min-width: 481px) and (max-width: 1023px) {
+    .cp {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 14rem));
+      justify-content: center;
+      gap: 2.5rem 3rem;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1199px) {
+    .cp {
+      gap: 3rem;
+    }
+  }

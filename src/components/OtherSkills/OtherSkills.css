@@ -90,3 +90,9 @@
         height: 70px;
     }
   }
+
+@media screen and (min-width: 481px) and (max-width: 1023px) {
+    .os-heading > * {
+        font-size: var(--heading-lg);
+    }
+}

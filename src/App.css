@@ -1,9 +1,3 @@
-@font-face {
-  font-family: 'Arima Madurai Regular';
-  src: url('../src/fonts/arima-madurai-regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 :root
 {
   --yellow: #F5C32C;
@@ -15,6 +9,16 @@
     --boxShadow : 0px 19px 60px rgb(0 0 0 / 8%);
     --orangeCard: rgba(252, 166, 31, 0.45);
     --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+    --darkBg: #0d1020;
+}
+
+html[data-theme="dark"] {
+  --black: #f1f3f9;
+  --gray: #c5cbdb;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .App {
@@ -22,6 +26,26 @@
   padding: 0.5rem 3.5rem;
   overflow: hidden;
   color: var(--black);
+}
+
+.scroll-link {
+  color: inherit;
+  text-decoration: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+html[data-theme="dark"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  background: linear-gradient(160deg, var(--darkBg) 0%, #151a35 50%, #1e1236 100%);
+}
+
+html[data-theme="dark"] .blur {
+  opacity: 0.3;
 }
 
 .button {
@@ -34,6 +58,8 @@
     padding: 12px 20px;
     line-height: 1;
     text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   .button:hover {
@@ -64,5 +90,20 @@
   @media screen and (max-width: 480px) {
     .App {
       padding: 0.5rem 1rem;
+    }
+  }
+
+  @media screen and (min-width: 481px) and (max-width: 1199px) {
+    .App {
+      --gutter: clamp(1.5rem, 6vw, 3.5rem);
+      padding: 0.5rem var(--gutter);
+    }
+  }
+
+  @media screen and (min-width: 481px) and (max-width: 1023px) {
+    .App {
+      --heading-sm: clamp(1.5rem, 1rem + 1.6vw, 2rem);
+      --heading-lg: clamp(1.8rem, 1rem + 2.8vw, 2.5rem);
+      --heading-hero: clamp(2.2rem, 1rem + 3.6vw, 3rem);
     }
   }
