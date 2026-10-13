@@ -270,3 +270,20 @@
     display: none;
   }
 }
+
+@media screen and (min-width: 481px) and (max-width: 1023px) {
+  .pj-heading > :nth-child(1) {
+    font-size: var(--heading-sm);
+  }
+  .pj-heading > :nth-child(2) {
+    font-size: var(--heading-lg);
+  }
+  .pj-card {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pj-body {
+    flex: 1 1 18rem;
+    min-width: 0;
+  }
+}

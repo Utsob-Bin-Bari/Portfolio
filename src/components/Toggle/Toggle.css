@@ -9,6 +9,8 @@
     overflow: hidden;
     cursor: pointer;
     background: white;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 html[data-theme="dark"] .toggle{
