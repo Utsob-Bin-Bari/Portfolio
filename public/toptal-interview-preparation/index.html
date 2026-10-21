@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Day-by-day Toptal React Native interview preparation tracker.">
+<title>TopTal-Interview Preparation</title>
+<link rel="icon" href="/favicon.svg">
+<style>[hidden]{display:none!important}body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a training logbook. A summary strip, then one day at a time; the full plan is a week-by-week ledger. */
+:root{
+  --bg:#F2F5F3; --surface:#FFFFFF; --ink:#15201B; --muted:#56655E; --line:#D5DDD9;
+  --accent:#006A4E; --accent-soft:#DDEEE6;
+  --amber:#865600; --amber-soft:#FAEFD6;
+  --red:#AE2234; --red-soft:#FAE3E6;
+  --blue:#285A88; --blue-soft:#E2EBF4;
+  --font-display:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1311; --surface:#151D1A; --ink:#E3EBE7; --muted:#98A69F; --line:#28332F;
+    --accent:#4CC79A; --accent-soft:#15302A;
+    --amber:#E6B24C; --amber-soft:#332810;
+    --red:#FF7D88; --red-soft:#3A1A1F;
+    --blue:#90BAE6; --blue-soft:#172538;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1311; --surface:#151D1A; --ink:#E3EBE7; --muted:#98A69F; --line:#28332F;
+  --accent:#4CC79A; --accent-soft:#15302A;
+  --amber:#E6B24C; --amber-soft:#332810;
+  --red:#FF7D88; --red-soft:#3A1A1F;
+  --blue:#90BAE6; --blue-soft:#172538;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding-block:28px 72px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{text-wrap:balance}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+h1{font-family:var(--font-display);font-weight:700;font-size:clamp(30px,5.4vw,42px);line-height:1.05;letter-spacing:-.015em;margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 20px;max-width:64ch}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.stat{background:var(--surface);padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.lbl{font-family:var(--font-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.val{font-family:var(--font-display);font-size:26px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.val.small{font-family:var(--font-body);font-size:14px;font-weight:600;line-height:1.35}
+.val.alert{color:var(--red)} .val.good{color:var(--accent)}
+.bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:2px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s ease}
+.tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--line);margin:26px 0 22px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{font:600 14px/1.2 var(--font-body);color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;padding:11px 12px;white-space:nowrap;cursor:pointer}
+.tabs button:hover{color:var(--ink)}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.panel{display:flex;flex-direction:column;gap:14px}
+.sec{font-family:var(--font-display);font-size:19px;font-weight:600;margin:14px 0 0}
+.hint{color:var(--muted);margin:0;font-size:14px}
+.ok{color:var(--accent);margin:4px 0 0;font-size:14px;font-weight:500}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px 10px}
+.day.is-today{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.day>header{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-bottom:4px}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.hrs{font-family:var(--font-mono);font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 8px}
+.day h3{font-family:var(--font-display);font-size:18px;font-weight:600;margin:0;flex:1 1 220px;min-width:0;line-height:1.25}
+.pill{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.07em;padding:2px 9px;border-radius:999px}
+.pill:empty{display:none}
+.pill.today{background:var(--accent-soft);color:var(--accent)}
+.pill.done{background:var(--accent);color:var(--surface)}
+.pill.behind{background:var(--red-soft);color:var(--red)}
+.tasks{list-style:none;margin:0;padding:0}
+.task{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;padding:9px 0;border-top:1px solid var(--line);align-items:start}
+.task:first-child{border-top:0}
+.task label{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;cursor:pointer}
+.task input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--accent);cursor:pointer}
+.task.is-done .txt{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--muted);text-decoration-thickness:1px}
+.meta{display:flex;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;white-space:nowrap;padding-top:2px}
+.tag{text-transform:uppercase;letter-spacing:.07em;padding:1px 7px;border-radius:4px;background:var(--bg);color:var(--muted)}
+.min{color:var(--muted);font-variant-numeric:tabular-nums;min-width:44px;text-align:right}
+.k-A .tag,.k-M .tag{background:var(--accent-soft);color:var(--accent)}
+.k-C .tag{background:var(--blue-soft);color:var(--blue)}
+.k-E .tag{background:var(--amber-soft);color:var(--amber)}
+.k-X .tag,.k-G .tag{background:var(--red-soft);color:var(--red)}
+.note{margin:8px 0 6px;padding:10px 14px;border-radius:8px;background:var(--bg);font-size:14px}
+.note.gate{background:var(--amber-soft)}
+.note.exam{background:var(--red-soft)}
+.note h4{margin:0 0 4px;font-size:13px;font-weight:600;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.05em}
+.note.gate h4{color:var(--amber)} .note.exam h4{color:var(--red)}
+.note ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:2px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{font-family:var(--font-display);font-size:18px;font-weight:600;margin:0 0 6px}
+.card ul,.card ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.card.exam{border-color:var(--red)}
+.catch{display:flex;flex-direction:column;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 16px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.legend .meta{padding:0}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:720px){.duo{grid-template-columns:1fr}}
+.week{border-top:1px solid var(--line)}
+.week:last-of-type{border-bottom:1px solid var(--line)}
+.week>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;padding:14px 0}
+.week>summary::-webkit-details-marker{display:none}
+.week>summary::before{content:"+";font-family:var(--font-mono);color:var(--muted);width:12px}
+.week[open]>summary::before{content:"−"}
+.wk{font-family:var(--font-mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;min-width:64px}
+.wf{font-family:var(--font-display);font-weight:600;font-size:17px;flex:1 1 240px;min-width:0}
+.wr{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.wp{font-family:var(--font-mono);font-size:12px;font-variant-numeric:tabular-nums;color:var(--accent);min-width:64px;text-align:right}
+.days{display:flex;flex-direction:column;gap:10px;padding:0 0 18px}
+.tgroup{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px 8px}
+.tgroup>header{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.tgroup h3{font-family:var(--font-display);font-size:18px;font-weight:600;margin:0}
+.tcount{font-family:var(--font-mono);font-size:12px;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tgroup p{margin:2px 0 6px;color:var(--muted);font-size:14px}
+.prose{max-width:70ch}
+.prose h2{font-family:var(--font-display);font-size:24px;margin:0 0 6px}
+.prose h3{font-family:var(--font-display);font-size:18px;font-weight:600;margin:22px 0 6px}
+.prose p{margin:0 0 10px}
+.prose ol,.prose ul{margin:0 0 10px;padding-left:22px;display:flex;flex-direction:column;gap:5px}
+.lead{font-size:16px;color:var(--ink)}
+.qgroup{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:0 0 12px}
+.qgroup h4{margin:0 0 6px;font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--amber)}
+.qgroup ol{margin:0}
+.tablewrap{overflow-x:auto;margin:0 0 10px}
+table{border-collapse:collapse;font-size:14px;min-width:520px;width:100%}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+th{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--surface)}
+td{height:30px;background:var(--surface)}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto;font:13px/1.5 var(--font-mono);margin:6px 0 4px}
+code{font-family:var(--font-mono);font-size:.92em}
+.q{margin:0 0 14px}
+.q b{font-family:var(--font-mono);font-weight:500;color:var(--accent);margin-right:6px}
+@media (max-width:640px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .task{grid-template-columns:minmax(0,1fr)}
+  .meta{padding-left:30px}
+  .min{text-align:left;min-width:0}
+}
+.linkbtn{align-self:flex-start;font:600 13px/1.2 var(--font-body);color:var(--accent);background:none;border:0;padding:2px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.keyform{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin-top:12px;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.keyform label{font-family:var(--font-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.keyform input{flex:1 1 220px;min-width:0;font:15px var(--font-mono);padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.keyform button{font:600 14px var(--font-body);padding:9px 14px;border-radius:8px;border:0;background:var(--accent);color:var(--surface);cursor:pointer}
+.keyform .hint{flex-basis:100%}
+@media (prefers-reduced-motion: reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">React Native · Toptal screening</p>
+    <h1>TopTal-Interview Preparation</h1>
+    <p class="sub">Prep runs 21 Oct – 24 Dec. Phase 2 and Phase 3 happen in your break, 25 Dec – 3 Jan. Weekdays 3 hours, Saturday and Sunday 8 hours.</p>
+    <div class="stats">
+      <div class="stat"><span class="lbl">Until the break</span><span class="val" id="s-days">–</span></div>
+      <div class="stat"><span class="lbl">Plan done</span><span class="val" id="s-done">0%</span><span class="bar"><i id="s-bar"></i></span></div>
+      <div class="stat"><span class="lbl">Behind</span><span class="val" id="s-behind">0</span></div>
+      <div class="stat"><span class="lbl">Sync</span><span class="val small" id="s-sync">Not set up</span><button type="button" class="linkbtn" id="sync-btn">Add sync key</button></div>
+    </div>
+    <form class="keyform" id="keyform" hidden>
+      <label for="sync-key">Sync key</label>
+      <input id="sync-key" name="sync-key" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="xxxx-xxxx-xxxx-xxxx">
+      <button type="submit">Save and sync</button>
+      <p class="hint">Enter the key once on each device. Your ticks then follow you across your phone, your laptop and any network.</p>
+    </form>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button role="tab" id="tab-today" data-tab="today" aria-selected="true">Today</button>
+    <button role="tab" id="tab-plan" data-tab="plan" aria-selected="false">Full plan</button>
+    <button role="tab" id="tab-topics" data-tab="topics" aria-selected="false">Live interview topics</button>
+    <button role="tab" id="tab-english" data-tab="english" aria-selected="false">English sessions</button>
+    <button role="tab" id="tab-baseline" data-tab="baseline" aria-selected="false">Baseline test</button>
+  </nav>
+
+  <section class="panel" id="p-today" role="tabpanel" aria-labelledby="tab-today"></section>
+  <section class="panel" id="p-plan" role="tabpanel" aria-labelledby="tab-plan" hidden></section>
+  <section class="panel" id="p-topics" role="tabpanel" aria-labelledby="tab-topics" hidden></section>
+
+  <section class="panel prose" id="p-english" role="tabpanel" aria-labelledby="tab-english" hidden>
+    <h2>English sessions with your wife</h2>
+    <p class="lead">Phase 1 judges your spoken English. Phase 3 needs you to think aloud for 45 minutes. Three short sessions a week build both. She doesn’t need to know programming. Her job is to say whether she understood you.</p>
+
+    <h3>Schedule</h3>
+    <ul>
+      <li><b>Monday and Wednesday, 20 minutes</b>, plus 10 minutes for your notes: 3 questions, 2 minutes each.</li>
+      <li><b>Saturday, 45 minutes</b>: a full mock interview.</li>
+      <li><b>The break</b>: a short think-aloud drill every day before Phase 3.</li>
+    </ul>
+
+    <h3>How she runs a weekday session</h3>
+    <ol>
+      <li>She picks 3 questions from the bank below, each from a different group.</li>
+      <li>She reads one aloud and starts a 2-minute timer on her phone.</li>
+      <li>While you answer, she makes a tally mark for every “um”, “uh”, “like” or “actually”, and taps the table when you stay silent for more than 5 seconds.</li>
+      <li>After each answer she scores 1 to 5 for <b>fluency</b> (smooth, few pauses), <b>clarity</b> (she understood it) and <b>confidence</b> (steady voice, no apologising).</li>
+      <li>She tells you one thing that was good and one thing to fix. You write both down.</li>
+    </ol>
+
+    <h3>Saturday full mock</h3>
+    <ul>
+      <li><b>Weeks 1–4:</b> 30 minutes of interview, about 8 questions from “About you” and “Work situations”. Then 15 minutes of feedback.</li>
+      <li><b>Weeks 5–7:</b> 20 minutes of interview. Then a 15-minute think-aloud drill: she reads an easy LeetCode problem aloud, you solve it on paper while talking the whole time, and she taps on every silence. Then 10 minutes of feedback.</li>
+      <li><b>Weeks 8–9:</b> she plays the Toptal recruiter: your intro, experience, weekly hours, rate, and your questions for them. Same length as the real call, about 30 minutes.</li>
+    </ul>
+
+    <h3>Your rules while answering</h3>
+    <ul>
+      <li>Answer first, details after. Keep each answer under 2 minutes.</li>
+      <li>Tell stories in four parts: the situation, your task, what you did, the result.</li>
+      <li>Short sentences and plain words.</li>
+      <li>Need time? Say “Let me think about that for a moment.” Then think.</li>
+      <li>Didn’t understand? Ask “Do you mean …?” instead of guessing.</li>
+    </ul>
+
+    <h3>Score sheet</h3>
+    <p>Copy these columns into a notebook. Target by 6 Dec: 4 or 5 on all three scores, two sessions in a row, and 3 or fewer fillers per answer.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Date</th><th>Question</th><th>Fluency</th><th>Clarity</th><th>Confidence</th><th>Fillers</th><th>Silences</th></tr></thead>
+        <tbody><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody>
+      </table>
+    </div>
+
+    <h3>Question bank</h3>
+    <div class="qgroup">
+      <h4>About you (Phase 1)</h4>
+      <ol>
+        <li>Tell me about yourself.</li>
+        <li>Why do you want to work through Toptal?</li>
+        <li>Why do you want to freelance?</li>
+        <li>Walk me through the project you are proudest of.</li>
+        <li>What is the hardest technical problem you have solved?</li>
+        <li>How many hours a week can you work, and at what times?</li>
+        <li>What hourly rate do you expect?</li>
+        <li>What kind of client or project do you want next?</li>
+        <li>What have you learned in the last month?</li>
+        <li>Where do you want to be in three years?</li>
+        <li>What is your biggest weakness as a developer?</li>
+        <li>Why should a client choose you over another React Native developer?</li>
+      </ol>
+    </div>
+    <div class="qgroup">
+      <h4>Work situations</h4>
+      <ol>
+        <li>Tell me about a time you disagreed with a teammate or a client.</li>
+        <li>Tell me about a bug that took you days to fix.</li>
+        <li>What do you do when you know you will miss a deadline?</li>
+        <li>A client asks for a feature you think is a bad idea. What do you do?</li>
+        <li>The requirements are unclear and the client is asleep in another time zone. What do you do?</li>
+        <li>Tell me about a mistake you made in production.</li>
+        <li>How do you keep a remote client updated?</li>
+        <li>Tell me about something you led.</li>
+        <li>How do you review someone else’s code?</li>
+        <li>How do you estimate how long a feature will take?</li>
+      </ol>
+    </div>
+    <div class="qgroup">
+      <h4>Explain it simply</h4>
+      <p class="hint">Explain as if she isn’t a developer. If she can repeat the idea back, you passed.</p>
+      <ol>
+        <li>What is React Native, and how is it different from a normal app?</li>
+        <li>What happens between tapping a button and the screen changing?</li>
+        <li>How does a chat app show a new message instantly?</li>
+        <li>How do you keep a money app secure?</li>
+        <li>Why do some apps feel slow, and how do you fix that?</li>
+        <li>What is an API?</li>
+        <li>What changes for a developer between Android and iOS?</li>
+        <li>How does an app get into the App Store?</li>
+        <li>What is “state” in an app?</li>
+        <li>Explain binary search to a child.</li>
+      </ol>
+    </div>
+    <div class="qgroup">
+      <h4>Follow-ups she can use any time</h4>
+      <ul>
+        <li>“Why?”</li>
+        <li>“Can you give me an example?”</li>
+        <li>“What would you do differently now?”</li>
+        <li>“Can you say that more simply?”</li>
+        <li>“What was the result?”</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="panel prose" id="p-baseline" role="tabpanel" aria-labelledby="tab-baseline" hidden>
+    <h2>Baseline test</h2>
+    <p class="lead">Do this on 21 Oct, timed, with no lookup and no AI. “Don’t know” is a useful answer. A googled answer gives you a plan aimed at the wrong gaps. When you finish, paste both parts into the chat with Claude.</p>
+
+    <h3>Part A · Algorithms, 90 minutes</h3>
+    <p>For A1–A7, write the approach and the time and space complexity in up to 3 lines. No code. Note how many minutes each took. Aim for about 50 minutes in total, then spend 30 on A8.</p>
+    <p class="q"><b>A1</b>An integer array (it may contain negatives) and a number k. Count the contiguous subarrays whose sum is exactly k.</p>
+    <p class="q"><b>A2</b>Package weights that must ship in order, and a number of days. Find the smallest ship capacity that ships everything within that many days.</p>
+    <p class="q"><b>A3</b>A grid of 0 (empty) and 1 (wall). You may knock down at most k walls. Find the shortest path from the top-left to the bottom-right cell.</p>
+    <p class="q"><b>A4</b>n tasks and dependency pairs (a must come before b). Return a valid order, or report that none exists.</p>
+    <p class="q"><b>A5</b>A string and a number k. Find the longest substring with at most k distinct characters.</p>
+    <p class="q"><b>A6</b>Merge k sorted linked lists. Then: how do you do it in JavaScript, which has no built-in priority queue?</p>
+    <p class="q"><b>A7</b>Find the length of the longest increasing subsequence in O(n log n). Explain why the “tails” array works.</p>
+    <p class="q"><b>A8</b>Now code A1 in full, in your interview language, and submit it on LeetCode (problem 560). Note the minutes and whether it passed on the first submit.</p>
+
+    <h3>Part B · JavaScript, React, React Native, 60 minutes</h3>
+    <p>One or two lines each, except where code is asked for.</p>
+    <p class="q"><b>B1</b>What does this print, in order?</p>
+<pre>console.log(1);
+setTimeout(() =&gt; console.log(2), 0);
+Promise.resolve().then(() =&gt; console.log(3));
+queueMicrotask(() =&gt; console.log(4));
+(async () =&gt; { console.log(5); await null; console.log(6); })();
+console.log(7);</pre>
+    <p class="q"><b>B2</b>What does this print, why, and what are two ways to fix it?</p>
+<pre>for (var i = 0; i &lt; 3; i++) setTimeout(() =&gt; console.log(i));</pre>
+    <p class="q"><b>B3</b>Promise.all vs allSettled vs race vs any, one line each. When Promise.all rejects, what happens to the other promises?</p>
+    <p class="q"><b>B4</b>How is <code>this</code> decided for a regular function vs an arrow function? Give one real bug it causes.</p>
+    <p class="q"><b>B5</b>Write <code>debounce(fn, ms)</code> from memory. Note how long it took.</p>
+    <p class="q"><b>B6</b>Why do array-index keys break a list where items get inserted or reordered? Describe what the user sees.</p>
+    <p class="q"><b>B7</b>When does a useEffect cleanup run? Do child or parent effects run first?</p>
+    <p class="q"><b>B8</b>This counter is meant to tick every second. What happens instead, and what are two fixes?</p>
+<pre>const [count, setCount] = useState(0);
+useEffect(() =&gt; {
+  const id = setInterval(() =&gt; setCount(count + 1), 1000);
+  return () =&gt; clearInterval(id);
+}, []);</pre>
+    <p class="q"><b>B9</b>List everything that makes a function component re-render.</p>
+    <p class="q"><b>B10</b>useMemo vs useCallback vs React.memo. When does React.memo do nothing even though the props look the same?</p>
+    <p class="q"><b>B11</b>What does this cost in re-renders, and how do you fix it?</p>
+<pre>&lt;UserContext.Provider value={{ user, setUser }}&gt;</pre>
+    <p class="q"><b>B12</b>useLayoutEffect vs useEffect: when do you need the first one?</p>
+    <p class="q"><b>B13</b>Which have you used: Actions, useActionState, useOptimistic, use, ref as a prop, the React Compiler?</p>
+    <p class="q"><b>B14</b>New Architecture: what problem does each of JSI, Fabric, TurboModules and Codegen solve compared with the old bridge?</p>
+    <p class="q"><b>B15</b>A 2,000-row FlatList with images stutters on a cheap Android phone. List everything you would check, in order.</p>
+    <p class="q"><b>B16</b>Why does a Reanimated animation stay smooth while the JS thread is blocked? What happens if you read <code>sharedValue.value</code> during render?</p>
+    <p class="q"><b>B17</b>What is Hermes, and what does it change?</p>
+    <p class="q"><b>B18</b>Have you written a native module (Turbo Module or Expo Modules API)? Rate your Kotlin and Swift from 1 to 5.</p>
+    <p class="q"><b>B19</b>What happens to JS timers and network requests when the app goes to the background, on iOS vs Android? How do you run background work?</p>
+    <p class="q"><b>B20</b>Which tools do you use to find a memory leak or a slow screen?</p>
+    <p class="q"><b>B21</b>What tests have you actually written with Jest, React Native Testing Library, Detox or Maestro? Rate yourself from 1 to 5.</p>
+  </section>
+</div>
+
+<script>
+const KIND = {A:"Algo",C:"Core",E:"English",M:"Mock",R:"Review",X:"Milestone",G:"Gate"};
+const WIFE = ["E",30,"English with your wife: 3 questions, 2 min each (English sessions tab). She scores; you write down her 2 fixes."];
+const FC = ["R",30,"Flashcards and error log: add today’s mistakes, review the cards that are due"];
+const REC = s => ["E",30,"Record yourself explaining in English, 2 min each: "+s+". Replay one and count your fillers."];
+const TIMED = ["M",90,"Timed test under Codility rules: Q2–Q4 of an unseen LeetCode virtual contest in 90 min. Test your own edge cases before every submit."];
+const TREV = ["R",60,"Review the test: for each problem, log the bug, the missed edge case or the slow part"];
+const SATW = ["E",45,"English with your wife: the Saturday full mock (English sessions tab)"];
+const FL45 = ["R",45,"Error log and flashcards"];
+const CONTEST = ["M",90,"LeetCode Weekly Contest, live at about 8:30 AM Bangladesh time (check the contest page), or a virtual one. JavaScript only."];
+const UPS = ["R",60,"Upsolve every contest problem you missed, then read one top solution for each"];
+const MOCK = (n, who) => ["M",60,"Live mock #"+n+" "+who+": 2 problems in 45 min, thinking aloud the whole time, then 15 min of feedback"];
+const CLAUDE = "with Claude (say “Run a Toptal live-screening mock” and record your voice as you think aloud)";
+const HUMAN = "with a developer friend or colleague";
+const LISTEN = ["E",30,"Listen to your mock recording and write down 3 things to say more clearly next time"];
+const SUNREV = ["R",30,"Weekly review: tick the Live interview topics you can now explain, then read next week"];
+const P3 = d => day(d,"Phase 3 window",[
+  ["A",60,"Two mediums, out loud (skip on interview day)"],
+  ["C",60,"Flashcards: your weakest topics only"],
+  ["E",30,"Think-aloud drill with your wife: one easy problem on paper"],
+  ["X",null,"Interview today? Use the Phase 3 checklist at the end of this week."]]);
+
+const WEEKS = [];
+function day(d, focus, tasks, note){
+  return {d, focus, note, tasks: tasks.map((t,i)=>({id:"d"+d.replace(/-/g,"")+"-"+i, k:t[0], m:t[1], s:t[2]}))};
+}
+function week(label, focus, days, extras){ WEEKS.push({label, focus, days, extras: extras||[]}); }
+
+week("Week 1","Baseline and setup",[
+  day("2026-10-21","Baseline test",[
+    ["A",90,"Baseline Part A, algorithms (Baseline test tab). Timed, no lookup, no AI."],
+    ["C",60,"Baseline Part B, JavaScript, React and React Native (Baseline test tab). “Don’t know” is a fine answer."],
+    ["R",30,"Paste both parts into the chat with Claude, with your answers to Claude’s setup questions"]]),
+  day("2026-10-22","Your JavaScript toolkit",[
+    ["X",null,"Choose your interview language and keep it for every phase. This plan assumes JavaScript."],
+    ["A",60,"Write your JS toolkit from memory and test it: MinHeap (push, pop, peek, size), Deque, lowerBound, UnionFind, numeric sort ((a, b) => a - b), 2-D grid setup with Array.from"],
+    ["A",60,"Codility Lessons 1–2: BinaryGap, CyclicRotation, OddOccurrencesInArray. Learn the editor: Run vs Submit, custom test input."],
+    ["C",60,"Event loop: call stack, macrotasks vs microtasks, what await really does. Predict the output of 5 ordering puzzles (ask Claude for them)."]]),
+  day("2026-10-23","Codility format",[
+    ["A",90,"Codility Lessons 3–4: FrogJmp, PermMissingElem, TapeEquilibrium, FrogRiverOne, PermCheck, MaxCounters, MissingInteger. Goal: 100% on the first submit."],
+    ["C",60,"Scope and closures: var, let, const, hoisting, the temporal dead zone, closures in loops. How this is decided: default, implicit, explicit, new, arrow."],
+    ["E",30,"Record a 2-minute “Tell me about yourself”. Keep it: this is your before-recording."]]),
+  day("2026-10-24","First timed test",[
+    ["M",90,"Timed test: Codility Lesson 5 as one 90-min set: PassingCars, GenomicRangeQuery, MinAvgTwoSlice, CountDiv. No hints."],
+    ["R",60,"Review correctness and performance on each, and start your error log"],
+    ["A",120,"Arrays and hashing: LC 49 Group Anagrams, 128 Longest Consecutive Sequence, 238 Product of Array Except Self, 41 First Missing Positive, 560 Subarray Sum Equals K"],
+    ["C",120,"Promises in depth: states, chaining, error propagation, all / allSettled / race / any, async/await errors, AbortController. Implement Promise.all and a promise pool with a concurrency limit."],
+    ["E",45,"First session with your wife: a full Phase 1 style mock. Her scores are your starting line."],
+    ["R",45,"Set up flashcards (Anki or a notes file) and the error log, then read next week"]]),
+  day("2026-10-25","Prefix sums · JS objects",[
+    CONTEST, UPS, MOCK(1, CLAUDE),
+    ["C",120,"Prototypes and classes, == vs ===, type coercion, shallow vs deep copy (spread, structuredClone), WeakMap, common memory leaks"],
+    ["A",90,"Prefix sums: LC 303 Range Sum Query – Immutable, 525 Contiguous Array, 974 Subarray Sums Divisible by K, 523 Continuous Subarray Sum"],
+    LISTEN, SUNREV])
+]);
+
+week("Week 2","Two pointers, sliding window, stacks · JavaScript in depth",[
+  day("2026-10-26","Two pointers · debounce",[
+    ["A",90,"Two pointers: LC 15 3Sum, 11 Container With Most Water, 42 Trapping Rain Water"],
+    ["C",60,"Implement debounce (with cancel and a leading-edge option) and throttle from memory, then test both"],
+    WIFE]),
+  day("2026-10-27","Sliding window · utilities",[
+    ["A",90,"Sliding window: LC 3 Longest Substring Without Repeating Characters, 424 Longest Repeating Character Replacement, 567 Permutation in String"],
+    ["C",60,"Implement memoize, deepClone (handle cycles with a WeakMap), curry and flatten(depth)"],
+    FC]),
+  day("2026-10-28","Hard windows · EventEmitter",[
+    ["A",90,"Hard windows: LC 76 Minimum Window Substring, 239 Sliding Window Maximum (a deque in JS), 992 Subarrays with K Different Integers"],
+    ["C",60,"Implement an EventEmitter (on, off, once, emit) and Function.prototype.bind. Know call vs apply vs bind."],
+    WIFE]),
+  day("2026-10-29","Sorting · generators",[
+    ["A",90,"Codility Lesson 6, Sorting: Distinct, MaxProductOfThree, Triangle, NumberOfDiscIntersections"],
+    ["C",60,"Iterators and generators, ES modules vs CommonJS, error handling: custom errors, finally, unhandled rejections"],
+    FC]),
+  day("2026-10-30","Stacks and queues",[
+    ["A",90,"Codility Lesson 7, Stacks and Queues: Brackets, Fish, Nesting, StoneWall"],
+    ["C",60,"Redo the JavaScript questions of the Baseline cold (B1–B5) and compare with your first answers"],
+    REC("the event loop, closures, promises")]),
+  day("2026-10-31","Monotonic stack · async patterns",[
+    ["M",90,"Timed test: Codility Lessons 8–9 as one set: Dominator, EquiLeader, MaxDoubleSliceSum"],
+    TREV,
+    ["A",120,"Monotonic stack: LC 739 Daily Temperatures, 84 Largest Rectangle in Histogram, 907 Sum of Subarray Minimums, 402 Remove K Digits"],
+    ["C",120,"Async patterns: retry with exponential backoff, timeout with AbortController, sequential vs parallel await. Write Jest tests with fake timers for your debounce."],
+    SATW, FL45]),
+  day("2026-11-01","Maximum slice · React rendering",[
+    CONTEST, UPS, MOCK(2, CLAUDE),
+    ["C",120,"React rendering: what triggers a render (state, parent, context, key), render vs commit, reconciliation, why index keys break reordered lists"],
+    ["A",90,"Maximum slice: Codility MaxProfit and MaxSliceSum, then LC 53 Maximum Subarray, 152 Maximum Product Subarray"],
+    ["E",30,"Re-record “Tell me about yourself” and compare it with the 23 Oct recording"],
+    SUNREV])
+]);
+
+week("Week 3","Binary search and number theory · React I",[
+  day("2026-11-02","Binary search · useState",[
+    ["A",90,"Binary search: LC 33 Search in Rotated Sorted Array, 153 Find Minimum in Rotated Sorted Array, 34 Find First and Last Position of Element in Sorted Array"],
+    ["C",60,"useState: state as a snapshot, functional updates, automatic batching, lazy initial state, updating objects and arrays immutably"],
+    WIFE]),
+  day("2026-11-03","Search on the answer · useEffect",[
+    ["A",90,"Binary search on the answer: LC 875 Koko Eating Bananas, 1011 Capacity To Ship Packages Within D Days, 410 Split Array Largest Sum"],
+    ["C",60,"useEffect: dependencies, when cleanup runs, why Strict Mode runs effects twice, the stale-closure interval bug, fetch race conditions"],
+    FC]),
+  day("2026-11-04","Hard binary search · refs",[
+    ["A",90,"LC 4 Median of Two Sorted Arrays, 162 Find Peak Element, 981 Time Based Key-Value Store"],
+    ["C",60,"useRef (a mutable box, refs to native views, the previous value), useLayoutEffect vs useEffect, useImperativeHandle, ref as a prop in React 19"],
+    WIFE]),
+  day("2026-11-05","Primes · memoization",[
+    ["A",90,"Codility Lesson 10, Prime and composite numbers: CountFactors, MinPerimeterRectangle, Peaks, Flags"],
+    ["C",60,"React.memo, useMemo, useCallback: when each helps, when memo silently fails (inline objects, children), what the React Compiler changes"],
+    FC]),
+  day("2026-11-06","Sieve and gcd · Context",[
+    ["A",90,"Codility Lessons 11–12: CountSemiprimes, CountNonDivisible, ChocolatesByNumbers, CommonPrimeDivisors"],
+    ["C",60,"Context: why every consumer re-renders, splitting contexts, memoizing the value, selector-based stores such as Zustand"],
+    REC("keys, useEffect cleanup, memo")]),
+  day("2026-11-07","Search screen build",[
+    ["M",90,"Timed test: Codility Lessons 13–14 as one set: FibFrog, Ladder, MinMaxDivision"],
+    TREV,
+    ["A",120,"Binary search on the answer, harder: Codility NailingPlanks, LC 1482 Minimum Number of Days to Make m Bouquets, 1283 Find the Smallest Divisor Given a Threshold, 378 Kth Smallest Element in a Sorted Matrix"],
+    ["C",120,"Build in Expo: a search screen with a debounced input, FlatList results, cancelled stale requests, and loading, empty and error states. A classic live-interview task."],
+    SATW, FL45]),
+  day("2026-11-08","Stacks · custom hooks",[
+    CONTEST, UPS, MOCK(3, CLAUDE),
+    ["C",120,"useReducer, custom hooks (useDebounce, usePrevious, a useFetch that aborts), error boundaries, Suspense and lazy"],
+    ["A",90,"Stacks: LC 20 Valid Parentheses, 155 Min Stack, 150 Evaluate Reverse Polish Notation, 853 Car Fleet"],
+    LISTEN, SUNREV])
+]);
+
+week("Week 4","Linked lists, trees, heaps · React II",[
+  day("2026-11-09","Linked lists · concurrent React",[
+    ["A",90,"Linked lists: LC 206 Reverse Linked List, 143 Reorder List, 138 Copy List with Random Pointer"],
+    ["C",60,"Concurrent React: useTransition, useDeferredValue, what interruptible rendering means"],
+    WIFE]),
+  day("2026-11-10","Heap in JS · React 19",[
+    ["A",90,"LC 23 Merge k Sorted Lists (use your JS MinHeap), 25 Reverse Nodes in k-Group, 146 LRU Cache (a Map version and a linked-list version)"],
+    ["C",60,"React 19: Actions, useActionState, useOptimistic, use(), ref as a prop. Know which ones matter in React Native."],
+    FC]),
+  day("2026-11-11","Trees · server state",[
+    ["A",90,"Trees: LC 102 Binary Tree Level Order Traversal, 199 Binary Tree Right Side View, 236 Lowest Common Ancestor of a Binary Tree"],
+    ["C",60,"Server state vs client state. TanStack Query: staleTime vs gcTime, invalidation, optimistic updates, infinite queries. Redux Toolkit vs Zustand vs Context."],
+    WIFE]),
+  day("2026-11-12","Hard trees · forms",[
+    ["A",90,"LC 98 Validate Binary Search Tree, 105 Construct Binary Tree from Preorder and Inorder Traversal, 124 Binary Tree Maximum Path Sum"],
+    ["C",60,"Forms: controlled vs uncontrolled, React Hook Form with Zod. Composition: children, render props, compound components."],
+    FC]),
+  day("2026-11-13","Caterpillar method",[
+    ["A",90,"Codility Lesson 15, Caterpillar method: AbsDistinct, CountDistinctSlices, CountTriangles, MinAbsSumOfTwo"],
+    ["C",60,"Redo the React questions of the Baseline cold (B6–B13) and compare"],
+    REC("React rendering, Context performance, React 19")]),
+  day("2026-11-14","Heaps · testing",[
+    ["M",90,"Timed test: Codility Lessons 16–17 as one set: MaxNonoverlappingSegments, TieRopes, NumberSolitaire"],
+    TREV,
+    ["A",120,"Heaps: LC 295 Find Median from Data Stream, 621 Task Scheduler, 1834 Single-Threaded CPU, 502 IPO"],
+    ["C",120,"Testing with Jest and React Native Testing Library: query priority, userEvent, mocking modules and timers, testing hooks. Write tests for your 7 Nov search screen."],
+    SATW, FL45]),
+  day("2026-11-15","Trees · React rapid-fire",[
+    CONTEST, UPS, MOCK(4, CLAUDE),
+    ["C",120,"React rapid-fire: answer 30 React questions aloud, 1 minute each (ask Claude for the list)"],
+    ["A",90,"LC 297 Serialize and Deserialize Binary Tree, 230 Kth Smallest Element in a BST, 543 Diameter of Binary Tree, 1448 Count Good Nodes in Binary Tree"],
+    LISTEN, SUNREV])
+]);
+
+week("Week 5","Graphs and backtracking · React Native I",[
+  day("2026-11-16","Graphs · New Architecture",[
+    ["A",90,"Graphs: LC 200 Number of Islands, 133 Clone Graph, 994 Rotting Oranges"],
+    ["C",60,"New Architecture: the old bridge, JSI, Fabric, TurboModules, Codegen, bridgeless mode. What problem each one solves."],
+    WIFE]),
+  day("2026-11-17","Topological sort · threads",[
+    ["A",90,"Topological sort: LC 207 Course Schedule, 210 Course Schedule II, then 417 Pacific Atlantic Water Flow"],
+    ["C",60,"Threads: the JS thread, the UI (main) thread, background layout, and what blocks what. Hermes: bytecode, startup time, garbage collection, debugging."],
+    FC]),
+  day("2026-11-18","Union-find · layout",[
+    ["A",90,"Union-find: LC 684 Redundant Connection, 547 Number of Provinces, 721 Accounts Merge"],
+    ["C",60,"Layout: Yoga flexbox defaults vs the web, absolute positioning, useWindowDimensions, safe areas, keyboard handling, Platform.select and .ios / .android files"],
+    WIFE]),
+  day("2026-11-19","Dijkstra · lists",[
+    ["A",90,"Shortest paths: LC 743 Network Delay Time (Dijkstra with your heap), 787 Cheapest Flights Within K Stops, 1631 Path With Minimum Effort"],
+    ["C",60,"Lists: FlatList props (keyExtractor, getItemLayout, windowSize, initialNumToRender, maxToRenderPerBatch, removeClippedSubviews), memoized rows, FlashList recycling, image sizing and caching"],
+    FC]),
+  day("2026-11-20","BFS with state · performance",[
+    ["A",90,"LC 127 Word Ladder, 1293 Shortest Path in a Grid with Obstacles Elimination, 1584 Min Cost to Connect All Points"],
+    ["C",60,"Performance: finding wasted renders with the React profiler, startup time, bundle size, deferring work until after interactions"],
+    REC("the New Architecture, threads, FlatList performance")]),
+  day("2026-11-21","Backtracking · measure a list",[
+    TIMED, TREV,
+    ["A",120,"Backtracking: LC 78 Subsets, 39 Combination Sum, 46 Permutations, 79 Word Search, 51 N-Queens"],
+    ["C",120,"Measure a 2,000-row FlatList with images on a real Android phone: note the Perf Monitor FPS, apply one fix at a time, write down what each fix gained"],
+    SATW, FL45]),
+  day("2026-11-22","Gate 1",[
+    CONTEST, UPS, MOCK(5, CLAUDE),
+    ["G",30,"Gate 1 check: the criteria are below"],
+    ["C",90,"React Native rapid-fire: answer 20 React Native questions aloud, 1 minute each"],
+    ["A",90,"LC 131 Palindrome Partitioning, 17 Letter Combinations of a Phone Number, 40 Combination Sum II"],
+    LISTEN, SUNREV],
+    {tone:"gate", title:"Gate 1: pass all three", items:[
+      "8 of your last 10 unseen mediums solved in 25 minutes or less",
+      "In both of the last two timed tests, at least 2 of 3 problems fully correct",
+      "Your JS toolkit typed from memory in under 10 minutes",
+      "Missed one? Tell Claude. Week 6 will trade three Core sessions for algorithm repair."]})
+]);
+
+week("Week 6","Dynamic programming and tries · React Native II",[
+  day("2026-11-23","1-D DP · animation",[
+    ["A",90,"1-D DP: LC 198 House Robber, 213 House Robber II, 91 Decode Ways"],
+    ["C",60,"Animation: Animated with useNativeDriver (what it can and cannot animate) vs Reanimated worklets, shared values, useAnimatedStyle, calling back to JS"],
+    WIFE]),
+  day("2026-11-24","Classic DP · gestures",[
+    ["A",90,"LC 322 Coin Change, 139 Word Break, 300 Longest Increasing Subsequence (then the O(n log n) version)"],
+    ["C",60,"Gesture Handler: gestures on the UI thread, Pan with Reanimated, composing gestures, layout animations"],
+    FC]),
+  day("2026-11-25","Knapsack · navigation",[
+    ["A",90,"Knapsack: LC 416 Partition Equal Subset Sum, 494 Target Sum, 518 Coin Change II"],
+    ["C",60,"Navigation: stack, tabs, drawer, expo-router, params, deep links and universal / app links, auth flows"],
+    WIFE]),
+  day("2026-11-26","2-D DP · app lifecycle",[
+    ["A",90,"2-D DP: LC 1143 Longest Common Subsequence, 72 Edit Distance, 64 Minimum Path Sum"],
+    ["C",60,"App lifecycle: AppState, what iOS and Android do to a backgrounded app, background tasks. Push notifications: the APNs and FCM flow, foreground vs background handling, channels."],
+    FC]),
+  day("2026-11-27","Grid DP · secure storage",[
+    ["A",90,"LC 329 Longest Increasing Path in a Matrix, 97 Interleaving String, 221 Maximal Square"],
+    ["C",60,"Storage and security: AsyncStorage vs MMKV vs SQLite vs SecureStore (Keychain / Keystore), where tokens live, certificate pinning, root and jailbreak checks. Turn your SonaliPay work into answers."],
+    REC("Reanimated, navigation, secure storage")]),
+  day("2026-11-28","Hard DP · gesture build",[
+    TIMED, TREV,
+    ["A",120,"Hard DP: LC 312 Burst Balloons, 115 Distinct Subsequences, 10 Regular Expression Matching, 1235 Maximum Profit in Job Scheduling"],
+    ["C",120,"Build: a swipe-to-delete list row with Gesture Handler and Reanimated, plus an undo snackbar"],
+    SATW, FL45]),
+  day("2026-11-29","Tries · offline",[
+    CONTEST, UPS, MOCK(6, HUMAN+" (your first human mock)"),
+    ["C",120,"Networking and offline: retries, an offline write queue, NetInfo, optimistic updates, cache persistence, WebSocket reconnect with backoff"],
+    ["A",90,"Tries: LC 208 Implement Trie, 211 Design Add and Search Words Data Structure, 212 Word Search II"],
+    LISTEN, SUNREV])
+]);
+
+week("Week 7","Greedy, intervals, bits · React Native III and TypeScript",[
+  day("2026-11-30","Greedy · native modules",[
+    ["A",90,"Greedy: LC 55 Jump Game, 45 Jump Game II, 134 Gas Station"],
+    ["C",60,"Native modules: Turbo Module specs and Codegen, the Expo Modules API in Swift and Kotlin, native UI components, sending events to JS"],
+    WIFE]),
+  day("2026-12-01","Intervals · build and release",[
+    ["A",90,"Intervals: LC 56 Merge Intervals, 57 Insert Interval, 435 Non-overlapping Intervals"],
+    ["C",60,"Build and release: Gradle variants, CocoaPods, signing, EAS build profiles, OTA updates and runtimeVersion (what OTA cannot change), app size"],
+    FC]),
+  day("2026-12-02","Greedy, harder · debugging",[
+    ["A",90,"LC 763 Partition Labels, 678 Valid Parenthesis String, 135 Candy"],
+    ["C",60,"Debugging: React Native DevTools, Perf Monitor, the Android Studio memory profiler, Xcode Instruments (Leaks, Time Profiler). Common leaks: listeners, timers, subscriptions."],
+    WIFE]),
+  day("2026-12-03","Bits and math · TypeScript I",[
+    ["A",90,"Bits and math: LC 136 Single Number, 338 Counting Bits, 371 Sum of Two Integers, 50 Pow(x, n). JS traps: 32-bit operators, >>> 0, numbers past 2^53, BigInt."],
+    ["C",60,"TypeScript I: generics and constraints, Partial / Pick / Omit / Record / ReturnType, discriminated unions with an exhaustive switch, narrowing, unknown vs any, satisfies"],
+    FC]),
+  day("2026-12-04","Matrix and strings · TypeScript II",[
+    ["A",90,"Matrix and strings: LC 48 Rotate Image, 54 Spiral Matrix, 5 Longest Palindromic Substring, 438 Find All Anagrams in a String"],
+    ["C",60,"TypeScript II: typing props, children, refs, generic components, useReducer and navigation params"],
+    REC("native modules, the limits of OTA updates, TypeScript generics")]),
+  day("2026-12-05","Weakest topic · Baseline redo",[
+    TIMED, TREV,
+    ["A",120,"Your weakest topic from the error log: 5 problems, timed"],
+    ["C",120,"Accessibility (labels, roles, states, screen readers, font scaling) and i18n (your 8-language work: RTL, fonts). Then redo the whole of Baseline Part B cold."],
+    SATW, FL45]),
+  day("2026-12-06","Gate 2: go or no-go",[
+    CONTEST, UPS, MOCK(7, HUMAN),
+    ["G",30,"Gate 2: decide whether to apply tomorrow. The criteria are below."],
+    ["C",120,"Mobile system design out loud: an offline-first chat app in 30 min (your Conected work), then a feed with pagination and image caching"],
+    ["A",60,"Two unseen mediums, 25 minutes each"],
+    LISTEN, SUNREV],
+    {tone:"gate", title:"Gate 2: apply only if all pass", items:[
+      "In 2 of the last 3 timed tests, all 3 problems fully correct, including performance",
+      "Human mock: 2 mediums finished in 45 minutes while talking the whole time",
+      "Baseline Part B redo: confident on 90% of it",
+      "Your wife’s scores: 4 or 5 on all three, two sessions in a row",
+      "All pass: apply tomorrow. Any miss: don’t apply yet, and ask Claude to re-plan. A delay costs weeks. A rejection costs 6 months."]})
+]);
+
+week("Week 8","Apply · exam simulation · Phase 1 prep",[
+  day("2026-12-07","Apply to Toptal",[
+    ["X",30,"Apply to Toptal. Your profile, CV, LinkedIn, GitHub and portfolio must tell the same story with the same dates."],
+    ["A",90,"Mixed set: 3 unseen mediums, 25 minutes each"],
+    ["C",30,"System design out loud: auth with token refresh and device revocation (your SonaliPay work)"],
+    WIFE],
+    {tone:"info", title:"Timing", items:[
+      "Applying today aims Phase 1 at mid-December, before the break.",
+      "If nobody contacts you within a week, email the recruiter and ask for dates."]}),
+  day("2026-12-08","Project stories",[
+    ["A",90,"Mixed set: 2 unseen mediums and 1 hard"],
+    ["C",60,"Write your project stories in four parts (situation, task, action, result): Conected chat, SonaliPay security, the shared animation layer, the Corrigan paywall, Taraa token streaming"],
+    FC]),
+  day("2026-12-09","Phase 1 answers",[
+    ["A",90,"Mixed set: 3 unseen mediums"],
+    ["C",60,"Phase 1 answers: a 90-second intro, why Toptal, weekly hours and time-zone overlap, your hourly rate as one confident number"],
+    ["E",30,"English with your wife: she plays the Toptal recruiter"]]),
+  day("2026-12-10","Codility re-run",[
+    ["A",90,"Codility re-run: your 6 hardest lesson tasks, cold, 15 minutes each"],
+    ["C",60,"System design out loud: a booking flow with live updates and push notifications (your Conected booking work)"],
+    FC]),
+  day("2026-12-11","Find your gaps",[
+    ["A",90,"Mixed set: 3 unseen mediums"],
+    ["C",60,"Go through the Live interview topics tab. Untick anything you can’t explain for 2 minutes and list the gaps."],
+    REC("your two weakest Live interview topics")]),
+  day("2026-12-12","Exam simulation 1",[
+    ["M",90,"Exam simulation: 3 unseen problems in 90 min under Codility rules (ask Claude to pick them)"],
+    TREV,
+    ["A",120,"Weak topics from your error log"],
+    ["C",120,"Close the gaps from Friday’s list"],
+    ["E",45,"English with your wife: the full Phase 1 recruiter script"],
+    FL45]),
+  day("2026-12-13","Full dress mock",[
+    CONTEST, UPS, MOCK(8, HUMAN+" (full 60 min: intro, 2 problems, React Native questions)"),
+    ["C",120,"Remaining gaps, then React Native rapid-fire out loud"],
+    ["A",90,"Two unseen mediums and one hard"],
+    LISTEN, SUNREV])
+],[
+  {title:"Phase 1 call: whichever day Toptal books it", show:["2026-12-07","2026-12-24"], tone:"exam", items:[
+    "That morning, say your 90-second intro out loud twice.",
+    "Have open: your CV, your rate, your weekly hours, two questions for them.",
+    "Ask them: how long is the window for the coding test? Can I take it on 26 December? What does the live interview cover for React Native?",
+    "If the test must be done before 25 December, take it on the next weekend. You will be ready by then.",
+    "Afterwards, write down every question they asked."]}
+]);
+
+week("Week 9","Phase 1 window · final mocks",[
+  day("2026-12-14","Rapid-fire: JS and React",[
+    ["A",90,"Mixed set: 3 unseen mediums"],
+    ["C",60,"Rapid-fire flashcards: all of JavaScript and React"],
+    ["E",30,"English with your wife: she plays the Toptal recruiter"]]),
+  day("2026-12-15","Rapid-fire: RN and TypeScript",[
+    ["A",90,"Mixed set: 2 mediums and 1 hard"],
+    ["C",60,"Rapid-fire flashcards: all of React Native and TypeScript"],
+    FC]),
+  day("2026-12-16","Three designs",[
+    ["A",90,"Mixed set: 3 unseen mediums"],
+    ["C",60,"Three system designs out loud, 20 minutes each"],
+    WIFE]),
+  day("2026-12-17","Repeat offenders",[
+    ["A",90,"Redo every error-log problem you failed twice"],
+    ["C",60,"Tell each project story out loud, 2 minutes each"],
+    FC]),
+  day("2026-12-18","Final topics pass",[
+    ["A",90,"Mixed set: 3 unseen mediums"],
+    ["C",60,"Final pass of the Live interview topics tab"],
+    ["E",30,"Record your final “Tell me about yourself” and compare it with 23 Oct"]]),
+  day("2026-12-19","Exam simulation 2 · room setup",[
+    ["M",90,"Exam simulation 2: 3 unseen problems in 90 min under Codility rules"],
+    TREV,
+    ["X",60,"Set up your interview room: the checklist is below"],
+    ["A",90,"Weak topics"],
+    ["C",90,"Weak topics"],
+    SATW, FL45],
+    {tone:"info", title:"Interview room checklist", items:[
+      "A UPS or IPS keeps the router and laptop running for 2 hours or more",
+      "A mobile hotspot with a data pack as backup internet",
+      "A quiet room agreed with family for test day and interview day",
+      "Headset and webcam tested on Zoom and Google Meet",
+      "Chrome with extensions turned off for the Codility test",
+      "You can convert the interviewer’s time zone to Bangladesh time"]}),
+  day("2026-12-20","Final dress rehearsal",[
+    CONTEST, UPS, MOCK(9, HUMAN+" (final dress rehearsal)"),
+    ["C",120,"Light review of everything you flagged"],
+    ["A",90,"Two mediums, relaxed"],
+    LISTEN, SUNREV])
+]);
+
+week("Week 10","Taper",[
+  day("2026-12-21","Taper",[
+    ["A",90,"Two mediums and one hard, no pressure"],
+    ["C",60,"Flashcards"],
+    WIFE]),
+  day("2026-12-22","Taper",[
+    ["A",90,"Your JS toolkit from memory, then two mediums"],
+    ["C",60,"Flashcards"],
+    FC]),
+  day("2026-12-23","Taper · fix your sleep",[
+    ["A",60,"Two mediums"],
+    ["C",60,"Light review"],
+    WIFE,
+    ["X",null,"From tonight, sleep and wake at the times you will keep on test day"]]),
+  day("2026-12-24","Rest",[
+    ["A",60,"Two easy problems and your toolkit from memory. Stop there."],
+    ["X",null,"Check the interview room again, then sleep 8 hours"]])
+]);
+
+week("The break","Phase 2 and Phase 3",[
+  day("2026-12-25","Warm-up",[
+    ["A",60,"Three easy-to-medium problems in JavaScript"],
+    ["A",30,"One Codility lesson task in the Codility editor"],
+    ["R",15,"Type your toolkit from memory"],
+    ["X",null,"Rest. Check the room. Sleep early."]]),
+  day("2026-12-26","Phase 2: the coding test",[
+    ["X",90,"Phase 2: the Codility test. The checklist is below."],
+    ["R",30,"Afternoon off. Write down how it went: what worked and what didn’t. Not the problems themselves: test content is confidential."]],
+    {tone:"exam", title:"Phase 2 checklist", items:[
+      "Morning slot, after breakfast. Phone silent, UPS on, hotspot ready.",
+      "Read every problem first (5 minutes). Start with the one you’re surest about.",
+      "Before each submit, test: empty input, one element, the largest size, negatives, duplicates.",
+      "Check your complexity against the largest input size.",
+      "Never leave a problem blank. A correct, slow solution beats nothing.",
+      "Keep the last 10 minutes to re-read your code."]}),
+  day("2026-12-27","Book Phase 3",[
+    ["X",30,"Check your email and book the earliest Phase 3 slot Toptal offers"],
+    ["M",60,"Think-aloud drill with your wife: 2 easy problems on paper"],
+    ["C",60,"React Native rapid-fire, out loud"],
+    ["A",60,"Two mediums, out loud"]]),
+  day("2026-12-28","Live-interview sharpening",[
+    ["M",60,"Live mock with a friend or Claude"],
+    ["A",90,"Three mediums, talking aloud the whole time"],
+    ["C",90,"React and React Native rapid-fire"],
+    ["E",30,"Project stories out loud"],
+    ["R",30,"Flashcards"]]),
+  day("2026-12-29","Live-interview sharpening",[
+    ["M",60,"Live mock with your wife reading the problem: think aloud from start to finish"],
+    ["A",90,"Three problems out loud, one of them hard"],
+    ["C",90,"One system design out loud, then JavaScript rapid-fire"],
+    ["E",30,"“Tell me about yourself” and your two questions for the interviewer"],
+    ["R",30,"Flashcards"]]),
+  P3("2026-12-30"), P3("2026-12-31"), P3("2027-01-01"), P3("2027-01-02"),
+  day("2027-01-03","Buffer",[
+    ["R",60,"Phase 3 moved? Keep the 2.5-hour daily routine until it happens."],
+    ["X",60,"Passed? Get your React Native starter ready for the test project: Expo, TypeScript, ESLint, Jest, React Native Testing Library"],
+    ["R",30,"Write down every topic from Phase 2 and Phase 3 that surprised you"]])
+],[
+  {title:"Phase 3 checklist: the live interview", show:["2026-12-27","2027-01-03"], tone:"exam", items:[
+    "Room, power, internet and headset ready 30 minutes early",
+    "Warm up with one easy problem, out loud",
+    "Restate the problem and confirm the input and output",
+    "Ask about input size, value ranges, empty input, duplicates",
+    "Brute force first, then improve. Agree on the approach before you type.",
+    "Talk while you type. Say “Let me think for a moment” instead of going silent.",
+    "Dry-run on the example, test edge cases aloud, state the final complexity",
+    "Ask your two prepared questions at the end"]},
+  {title:"Next: Turing, from 4 January", tone:"info", items:[
+    "Check Turing’s current vetting steps when you sign up. Expect stack quizzes, a timed coding challenge and an interview, but confirm.",
+    "Quizzes reward quick recall: run your JavaScript, React and React Native flashcards the day before.",
+    "If its coding challenge is short, practise solving one medium in 20 minutes.",
+    "Reuse your Phase 1 answers and project stories for its English interview."]}
+]);
+
+const TOPICS = [
+  {id:"how", title:"How you work through a problem", sub:"The interviewer scores this as much as the answer.", items:[
+    "Restate the problem in your own words and confirm the input and output",
+    "Ask about input size, value ranges, negatives, duplicates, empty input",
+    "Work one small example by hand before coding",
+    "Say the brute force and its complexity, then improve it",
+    "Agree on the approach before you type",
+    "Talk while you code; never silent for more than about 10 seconds",
+    "Say “Let me think for a moment” instead of going quiet",
+    "Clear names and small helper functions",
+    "Dry-run your code on the example, line by line",
+    "Test edge cases out loud",
+    "State the final time and space complexity",
+    "Take a hint calmly and build on it",
+    "Type your JS toolkit (heap, deque, binary search, union-find) without thinking"]},
+  {id:"algo", title:"Algorithm patterns", sub:"Tick when you can spot the pattern and code it in 25 minutes.", items:[
+    "Hash maps and counting","Two pointers","Sliding window, fixed and variable","Prefix sums with a hash map",
+    "Binary search on an index","Binary search on the answer","Monotonic stack and deque",
+    "Linked lists: fast and slow pointers, reversal","Tree DFS and BFS","Binary search tree properties",
+    "Heaps: top-k and two heaps","Grid BFS and DFS","Topological sort","Union-find","Dijkstra",
+    "Backtracking","1-D dynamic programming","2-D dynamic programming and knapsack",
+    "Longest increasing subsequence in O(n log n)","Intervals: sort and sweep",
+    "Greedy, with a one-line reason it works","Tries","Bit manipulation",
+    "Math: gcd, sieve, modular arithmetic","Complexity analysis, including amortized"]},
+  {id:"js", title:"JavaScript", sub:"Tick when you can explain it out loud, in English, for 2 minutes without notes.", items:[
+    "Event loop: macrotasks and microtasks","Closures, scope, hoisting, the temporal dead zone","How this is decided",
+    "Prototypes and classes","Promises, async/await and the Promise combinators","Cancelling work with AbortController",
+    "Equality and type coercion","Shallow vs deep copy, structuredClone","Immutability patterns",
+    "Iterators and generators","ES modules vs CommonJS","Memory leaks, WeakMap and garbage collection",
+    "From memory: debounce, throttle, Promise.all, memoize, deepClone, EventEmitter, bind"]},
+  {id:"react", title:"React", sub:"Same rule: 2 minutes, out loud, no notes.", items:[
+    "What triggers a render","Render phase vs commit phase","Reconciliation and keys",
+    "useState: snapshots, functional updates, batching","useEffect: dependencies, cleanup, Strict Mode",
+    "Stale closures","Fetch race conditions","useRef and useLayoutEffect",
+    "React.memo, useMemo, useCallback and the React Compiler","Context performance",
+    "useReducer and custom hooks","Error boundaries and Suspense","useTransition and useDeferredValue",
+    "React 19: Actions, useActionState, useOptimistic, use, ref as a prop","Controlled vs uncontrolled forms",
+    "Server state vs client state (TanStack Query)","Redux Toolkit vs Zustand vs Context","Testing with React Testing Library"]},
+  {id:"rn", title:"React Native", sub:"Back each answer with something you shipped.", items:[
+    "Old bridge vs New Architecture: JSI, Fabric, TurboModules, Codegen","Bridgeless mode",
+    "JS thread vs UI thread","Hermes","Yoga layout vs web flexbox","FlatList and FlashList performance",
+    "Image loading and caching","Animated with the native driver vs Reanimated worklets","Gesture Handler",
+    "Navigation and deep links","AppState and background behaviour","Push notifications: APNs and FCM",
+    "Permissions","Secure storage: Keychain, Keystore, SecureStore, MMKV","Offline support and networking",
+    "Native modules: Turbo Modules, Expo Modules API","Build and release: signing, EAS, what OTA cannot change",
+    "Profiling and finding memory leaks","Testing: Jest, RNTL, Detox or Maestro","Accessibility","iOS vs Android differences"]},
+  {id:"ts", title:"TypeScript", sub:"", items:[
+    "Generics and constraints","Utility types","Discriminated unions and an exhaustive switch",
+    "Narrowing and type guards","unknown vs any","Typing props, children, refs and hooks",
+    "Typing navigation params","satisfies"]},
+  {id:"design", title:"Mobile system design", sub:"30 minutes out loud, with a diagram on paper.", items:[
+    "Offline-first sync and conflict handling","Real-time chat (your Conected work)",
+    "A feed with pagination and image caching","Auth with token refresh (your SonaliPay work)",
+    "Push notification architecture","Crash reporting and analytics","Releases: staged rollout, OTA, forced update"]},
+  {id:"stories", title:"Your stories", sub:"Situation, task, action, result. Under 2 minutes each.", items:[
+    "Conected: real-time chat with optimistic UI","SonaliPay: session security and the 401 refresh flow",
+    "The shared animation layer","Corrigan: streaming and the paywall","Taraa: token-by-token streaming",
+    "A production bug you fixed","A disagreement with a teammate or client","A deadline you almost missed",
+    "Something you led (the hall teams, the hall mess)"]},
+  {id:"ask", title:"Questions you ask them", sub:"Have two ready for the end of every call.", items:[
+    "What does a typical first client project look like for a React Native developer?",
+    "What separates the developers who get matched fast from those who wait?"]}
+];
+TOPICS.forEach(g => g.rows = g.items.map((s,i)=>({id:"t-"+g.id+"-"+i, s})));
+
+const DAYS = WEEKS.flatMap(w => w.days);
+const PLAN_TASKS = DAYS.flatMap(d => d.tasks);
+const BREAK_START = "2026-12-25";
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const WDAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const LS_KEY = "toptal-prep-done-v1", LS_TAB = "toptal-prep-tab";
+
+let done = {};
+try { done = JSON.parse(localStorage.getItem(LS_KEY) || "{}") || {}; } catch (e) { done = {}; }
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const pad = n => String(n).padStart(2,"0");
+function todayKey(){ const t = new Date(); return t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate()); }
+function parts(k){ return k.split("-").map(Number); }
+function fmt(k){ const [y,m,d] = parts(k); const dt = new Date(y,m-1,d); return WDAYS[dt.getDay()]+" "+d+" "+MONTHS[m-1]; }
+function daysBetween(a,b){ const [y1,m1,d1]=parts(a),[y2,m2,d2]=parts(b); return Math.round((Date.UTC(y2,m2-1,d2)-Date.UTC(y1,m1-1,d1))/864e5); }
+function fmtMin(m){ if (!m) return ""; const h = Math.floor(m/60), r = m%60; return h ? (r ? h+"h "+r+"m" : h+"h") : r+"m"; }
+function dayMinutes(d){ return d.tasks.reduce((a,t)=>a+(t.m||0),0); }
+
+function taskRow(t, ctx){
+  const on = !!done[t.id];
+  return `<li class="task k-${t.k}${on?" is-done":""}"><label><input type="checkbox" id="cb-${ctx}-${t.id}" data-id="${t.id}"${on?" checked":""}><span class="txt">${esc(t.s)}</span></label><span class="meta"><span class="tag">${KIND[t.k]}</span><span class="min">${fmtMin(t.m)}</span></span></li>`;
+}
+function topicRow(t){
+  const on = !!done[t.id];
+  return `<li class="task${on?" is-done":""}"><label><input type="checkbox" id="cb-t-${t.id}" data-id="${t.id}"${on?" checked":""}><span class="txt">${esc(t.s)}</span></label></li>`;
+}
+function noteHTML(n){
+  if (!n) return "";
+  return `<div class="note ${n.tone||""}"><h4>${esc(n.title)}</h4><ul>${n.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`;
+}
+function dayStatus(d){
+  const tk = todayKey(), left = d.tasks.filter(t=>!done[t.id]).length;
+  if (!left) return ["done","Done"];
+  if (d.d === tk) return ["today","Today"];
+  if (d.d < tk) return ["behind", left+" left"];
+  return ["",""];
+}
+function dayCard(d, ctx){
+  const [cls,label] = dayStatus(d);
+  return `<article class="day${d.d===todayKey()?" is-today":""}"><header><span class="date">${fmt(d.d)}</span><span class="hrs">${fmtMin(dayMinutes(d))}</span><h3>${esc(d.focus)}</h3><span class="pill ${cls}" data-status="${d.d}">${label}</span></header><ul class="tasks">${d.tasks.map(t=>taskRow(t,ctx)).join("")}</ul>${noteHTML(d.note)}</article>`;
+}
+function extraCard(x){
+  return `<div class="card ${x.tone==="exam"?"exam":""}"><h3>${esc(x.title)}</h3><ul>${x.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`;
+}
+
+function renderToday(){
+  const tk = todayKey();
+  let i = DAYS.findIndex(d=>d.d===tk), pre = "";
+  if (i < 0){
+    if (tk < DAYS[0].d){ i = 0; pre = `<p class="hint">Your plan starts on ${fmt(DAYS[0].d)}. Here is day one.</p>`; }
+    else { i = DAYS.length-1; pre = `<p class="hint">The plan has ended. Here is its last day.</p>`; }
+  }
+  const extras = WEEKS.flatMap(w=>w.extras).filter(x=>x.show && tk>=x.show[0] && tk<=x.show[1]);
+  const next = DAYS[i+1];
+  document.getElementById("p-today").innerHTML =
+    pre + dayCard(DAYS[i],"today") + extras.map(extraCard).join("") +
+    `<div id="behind"></div>` +
+    (next ? `<h3 class="sec">Tomorrow</h3>${dayCard(next,"next")}` : "");
+  renderBehind();
+}
+function behindGroups(){
+  const tk = todayKey(), out = [];
+  for (const d of DAYS){ if (d.d >= tk) break; const left = d.tasks.filter(t=>!done[t.id]); if (left.length) out.push([d,left]); }
+  return out;
+}
+function renderBehind(){
+  const el = document.getElementById("behind"); if (!el) return;
+  const g = behindGroups(), n = g.reduce((a,x)=>a+x[1].length,0);
+  if (!n){ el.innerHTML = todayKey() > DAYS[0].d ? `<p class="ok">Nothing left from earlier days.</p>` : ""; return; }
+  el.innerHTML = `<h3 class="sec">Catch up · ${n} task${n>1?"s":""} from earlier days</h3><p class="hint">Do the Algo and Mock tasks first. If time is short, drop old Review tasks.</p>` +
+    g.map(([d,left])=>`<div class="catch"><span class="date">${fmt(d.d)} · ${esc(d.focus)}</span><ul class="tasks">${left.map(t=>taskRow(t,"b")).join("")}</ul></div>`).join("");
+}
+
+function renderPlan(){
+  const tk = todayKey();
+  const head = `<div class="duo">
+    <div class="card"><h3>Toptal’s steps</h3><ol>
+      <li>English and personality call, about 30 min: mid-December</li>
+      <li>Timed coding test on Codility, usually about 90 min with 2–3 problems: planned for 26 Dec</li>
+      <li>Live technical interview with a Toptal engineer: the earliest slot from 28 Dec</li>
+      <li>Test project, 1–3 weeks: January</li></ol>
+      <p class="hint" style="margin-top:8px">Steps can change, so confirm the format on your Phase 1 call. Each rejection means a 6-month wait.</p></div>
+    <div class="card"><h3>Rules</h3><ul>
+      <li>One language for everything: JavaScript.</li>
+      <li>NeetCode 250 comes first. If an Algo task’s topic still has unsolved NeetCode 250 problems, do those, then the listed ones. Finish the 250 by 6 Dec.</li>
+      <li>Seen a problem before? Solve it again from a blank file, timed. Targets: medium 25 min, hard 40 min.</li>
+      <li>Every mistake goes into the error log the same day.</li>
+      <li>Missed a day? It appears under Catch up on the Today tab. Do its Algo and Mock tasks first.</li>
+      <li>Core means JavaScript, React, React Native and TypeScript. After each Core session, explain the topic aloud in English for 2 minutes.</li></ul></div>
+  </div>
+  <div class="legend">${Object.keys(KIND).map(k=>`<span class="k-${k}"><span class="meta"><span class="tag">${KIND[k]}</span></span></span>`).join("")}</div>`;
+  const weeks = WEEKS.map((w,wi)=>{
+    const first = w.days[0].d, last = w.days[w.days.length-1].d;
+    const open = tk >= first && tk <= last || (wi===0 && tk < first);
+    return `<details class="week" id="week-${wi}"${open?" open":""}><summary><span class="wk">${esc(w.label)}</span><span class="wf">${esc(w.focus)}</span><span class="wr">${fmt(first)} – ${fmt(last)}</span><span class="wp" data-week="${wi}"></span></summary><div class="days">${w.days.map(d=>dayCard(d,"plan")).join("")}${w.extras.map(extraCard).join("")}</div></details>`;
+  }).join("");
+  document.getElementById("p-plan").innerHTML = head + `<div>${weeks}</div>`;
+}
+
+function renderTopics(){
+  document.getElementById("p-topics").innerHTML =
+    `<p class="hint">Phase 3 is a live interview with a Toptal engineer: algorithm problems solved out loud, plus questions on your stack. Tick a topic only when you can explain it out loud, in English, for 2 minutes without notes.</p>` +
+    TOPICS.map(g=>`<section class="tgroup"><header><h3>${esc(g.title)}</h3><span class="tcount" data-tgroup="${g.id}"></span></header>${g.sub?`<p>${esc(g.sub)}</p>`:""}<ul class="tasks">${g.rows.map(topicRow).join("")}</ul></section>`).join("");
+}
+
+function refresh(){
+  const tk = todayKey();
+  const total = PLAN_TASKS.length, doneN = PLAN_TASKS.filter(t=>done[t.id]).length;
+  const pct = Math.round(doneN*100/total);
+  document.getElementById("s-done").textContent = pct+"%";
+  document.getElementById("s-bar").style.width = pct+"%";
+  const dleft = daysBetween(tk, BREAK_START);
+  document.getElementById("s-days").textContent = dleft > 0 ? dleft+(dleft===1?" day":" days") : (tk <= "2027-01-03" ? "In the break" : "Done");
+  const behind = behindGroups().reduce((a,x)=>a+x[1].length,0);
+  const b = document.getElementById("s-behind");
+  b.textContent = behind ? behind+(behind===1?" task":" tasks") : "On track";
+  b.className = "val "+(behind ? "alert" : "good");
+  WEEKS.forEach((w,wi)=>{
+    const ts = w.days.flatMap(d=>d.tasks), n = ts.filter(t=>done[t.id]).length;
+    document.querySelectorAll(`[data-week="${wi}"]`).forEach(el=>el.textContent = n+" / "+ts.length);
+  });
+  DAYS.forEach(d=>{
+    const [cls,label] = dayStatus(d);
+    document.querySelectorAll(`[data-status="${d.d}"]`).forEach(el=>{ el.className = "pill "+cls; el.textContent = label; });
+  });
+  TOPICS.forEach(g=>{
+    const n = g.rows.filter(t=>done[t.id]).length;
+    document.querySelectorAll(`[data-tgroup="${g.id}"]`).forEach(el=>el.textContent = n+" / "+g.rows.length);
+  });
+}
+function syncBoxes(){
+  document.querySelectorAll("input[data-id]").forEach(cb=>{
+    const on = !!done[cb.dataset.id];
+    cb.checked = on;
+    cb.closest(".task").classList.toggle("is-done", on);
+  });
+}
+
+let behindTimer = null;
+document.addEventListener("change", e=>{
+  const id = e.target && e.target.dataset ? e.target.dataset.id : null;
+  if (!id) return;
+  if (e.target.checked) done[id] = 1; else delete done[id];
+  document.querySelectorAll(`input[data-id="${id}"]`).forEach(cb=>{ cb.checked = !!done[id]; cb.closest(".task").classList.toggle("is-done", !!done[id]); });
+  refresh();
+  clearTimeout(behindTimer);
+  behindTimer = setTimeout(renderBehind, 500);
+  saveLocal();
+  queueOp(id, !!done[id]);
+});
+
+function lsGet(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+function lsSet(k, v){ try { localStorage.setItem(k, v); } catch (e) {} }
+function saveLocal(){ lsSet(LS_KEY, JSON.stringify(done)); }
+
+const API = "/api/prep-progress";
+const LS_SYNC = "toptal-prep-sync-key", LS_PENDING = "toptal-prep-pending";
+let syncKey = lsGet(LS_SYNC) || "";
+let pending = [];
+try { pending = JSON.parse(lsGet(LS_PENDING) || "[]"); if (!Array.isArray(pending)) pending = []; } catch (e) { pending = []; }
+let flushing = false, flushTimer = null;
+
+function setSync(state){
+  const waiting = pending.length ? " " + pending.length + " change" + (pending.length > 1 ? "s" : "") + " waiting." : "";
+  const text = {
+    nokey: "Not set up. Ticks stay on this device.",
+    ok: "Synced across your devices",
+    saving: "Saving…",
+    badkey: "Wrong sync key." + waiting,
+    offline: "Offline." + waiting
+  }[state] || "Offline." + waiting;
+  const el = document.getElementById("s-sync");
+  el.textContent = text;
+  el.className = "val small" + (state === "badkey" ? " alert" : state === "ok" ? " good" : "");
+  document.getElementById("sync-btn").hidden = !(state === "nokey" || state === "badkey");
+}
+function savePending(){ lsSet(LS_PENDING, JSON.stringify(pending)); }
+function queueOp(id, on){
+  pending = pending.filter(op => op.id !== id);
+  pending.push({id, on});
+  savePending();
+  clearTimeout(flushTimer);
+  flushTimer = setTimeout(flush, 600);
+}
+async function api(method, body){
+  const headers = {"x-sync-key": syncKey};
+  if (body) headers["content-type"] = "application/json";
+  const res = await fetch(API, {method, headers, body: body ? JSON.stringify(body) : undefined, cache: "no-store"});
+  if (res.status === 401){ const e = new Error("Wrong sync key"); e.code = "badkey"; throw e; }
+  if (!res.ok){ const e = new Error("Sync failed"); e.code = "offline"; throw e; }
+  return res.json();
+}
+function adopt(ids){
+  const next = {};
+  ids.forEach(id => { next[id] = 1; });
+  pending.forEach(op => { if (op.on) next[op.id] = 1; else delete next[op.id]; });
+  done = next;
+  saveLocal(); syncBoxes(); refresh(); renderBehind();
+}
+async function pull(){
+  if (!syncKey){ setSync("nokey"); return; }
+  try {
+    const data = await api("GET");
+    adopt(data.done || []);
+    if (pending.length) flush(); else setSync("ok");
+  } catch (e) { setSync(e.code); }
+}
+async function flush(){
+  if (!syncKey){ setSync("nokey"); return; }
+  if (flushing || !pending.length) return;
+  flushing = true;
+  const batch = pending.slice(0, 200);
+  setSync("saving");
+  try {
+    const data = await api("POST", {ops: batch});
+    pending = pending.filter(op => !batch.includes(op));
+    savePending();
+    adopt(data.done || []);
+    setSync(pending.length ? "saving" : "ok");
+  } catch (e) {
+    flushing = false;
+    setSync(e.code);
+    return;
+  }
+  flushing = false;
+  if (pending.length) flush();
+}
+function captureKeyFromHash(){
+  const m = (location.hash || "").match(/^#key=([A-Za-z0-9-]{8,64})$/);
+  if (!m) return;
+  syncKey = m[1];
+  lsSet(LS_SYNC, syncKey);
+  try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+}
+document.getElementById("sync-btn").addEventListener("click", () => {
+  const form = document.getElementById("keyform");
+  form.hidden = !form.hidden;
+  if (!form.hidden) document.getElementById("sync-key").focus();
+});
+document.getElementById("keyform").addEventListener("submit", e => {
+  e.preventDefault();
+  const value = document.getElementById("sync-key").value.trim();
+  if (!value) return;
+  syncKey = value;
+  lsSet(LS_SYNC, value);
+  document.getElementById("keyform").hidden = true;
+  pull();
+});
+function startSync(){
+  captureKeyFromHash();
+  pull();
+  window.addEventListener("online", pull);
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") pull(); });
+}
+
+const TABS = ["today","plan","topics","english","baseline"];
+function showTab(name){
+  if (!TABS.includes(name)) name = "today";
+  TABS.forEach(t=>{
+    document.getElementById("p-"+t).hidden = t !== name;
+    document.getElementById("tab-"+t).setAttribute("aria-selected", t===name ? "true" : "false");
+  });
+  try { localStorage.setItem(LS_TAB, name); } catch (e) {}
+}
+document.querySelector(".tabs").addEventListener("click", e=>{
+  const b = e.target.closest("button[data-tab]"); if (b) showTab(b.dataset.tab);
+});
+
+renderToday(); renderPlan(); renderTopics(); refresh();
+let startTab = "today";
+try { startTab = localStorage.getItem(LS_TAB) || "today"; } catch (e) {}
+const hash = (location.hash || "").slice(1);
+showTab(TABS.includes(hash) ? hash : startTab);
+startSync();
+</script>
+</body>
+</html>
